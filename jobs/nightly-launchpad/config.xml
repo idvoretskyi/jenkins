@@ -1,15 +1,43 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
+  <actions/>
+  <description>Build the dpkg source distributions and upload them to launchpad.&#xd;
+&#xd;
+Nodes with the launchpad label need the &apos;RethinkDB Packaging&apos; GPG keys available.</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.scm.NullSCM"/>
-  <canRoam>true</canRoam>
+  <assignedNode>launchpad</assignedNode>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers class="vector"/>
   <concurrentBuild>false</concurrentBuild>
-  <builders/>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>[ -d rethinkdb ] || git clone https://github.com/rethinkdb/rethinkdb.git rethinkdb
+
+rm *.dsc *.changes *.build *.tar.gz || true
+
+cd rethinkdb
+
+git fetch origin
+git checkout -B next origin/next
+
+for ubrelease in oneiric ; do # precise quantal raring ; do
+    make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src
+done
+
+#for ubrelease in lucid maverick natty; do
+#    make BUILD_PORTABLE=1 UBUNTU_RELEASE=$ubrelease build-deb-src
+#done
+
+cd ..
+
+dput ppa:rethinkdb/unstable rethinkdb*.changes</command>
+    </hudson.tasks.Shell>
+  </builders>
   <publishers/>
   <buildWrappers/>
 </project>
