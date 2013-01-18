@@ -24,3 +24,5 @@ _removed/
 fingerprints/
 gerrit/
 jobs/*/scm-polling.log
+.subversion/
+Fingerprint cleanup.log

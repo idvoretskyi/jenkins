@@ -318,7 +318,97 @@
       <sshPort>22</sshPort>
     </hudson.plugins.ec2.EC2Slave>
     <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
-      <name>i-08ecd451</name>
+      <name>i-a4655ffd</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-b4576ded</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-b6576def</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-a8576df1</name>
       <description>ubuntu 11.10 test 64bit</description>
       <remoteFS>/var/jenkins</remoteFS>
       <numExecutors>1</numExecutors>
@@ -367,9 +457,6 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames class="tree-set">
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>build-debug</string>
-        <string>package-osx</string>
-        <string>package-rpm</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -381,6 +468,7 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
+      <includeRegex>(build|package)-.*</includeRegex>
     </listView>
     <listView>
       <owner class="hudson" reference="../../.."/>
@@ -390,6 +478,8 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames class="tree-set">
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>nightly-launchpad</string>
+        <string>nightly-osx</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -402,6 +492,48 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <includeRegex>nightly-.*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Uploads</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames class="tree-set">
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>upload-.*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Tests</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames class="tree-set">
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>test-.*</includeRegex>
     </listView>
   </views>
   <primaryView>Builds</primaryView>

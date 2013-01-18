@@ -1,14 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<project>
+<com.cloudbees.plugins.flow.BuildFlow plugin="build-flow-plugin@0.7">
   <actions/>
-  <description>Launch the package-osx build and upload the result to download.rethinkdb.com&#xd;
-&#xd;
-ssh url was ssh://dotcloud@download-I7KSYN2O.azva.dotcloud.net:21185</description>
+  <description>Build an osx package every night and upload it to download.rethinkdb.com/osx/nightly/</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.scm.NullSCM"/>
-  <assignedNode>dotcloud</assignedNode>
-  <canRoam>false</canRoam>
+  <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
@@ -18,63 +15,11 @@ ssh url was ssh://dotcloud@download-I7KSYN2O.azva.dotcloud.net:21185</descriptio
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <builders>
-    <hudson.tasks.Shell>
-      <command>rm rethinkdb-*.dmg || true</command>
-    </hudson.tasks.Shell>
-    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.16">
-      <configs>
-        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
-          <configs class="java.util.Collections$EmptyList"/>
-          <projects>package-osx</projects>
-          <condition>ALWAYS</condition>
-          <triggerWithNoParameters>false</triggerWithNoParameters>
-          <block>
-            <buildStepFailureThreshold>
-              <name>UNSTABLE</name>
-              <ordinal>1</ordinal>
-              <color>YELLOW</color>
-            </buildStepFailureThreshold>
-            <unstableThreshold>
-              <name>UNSTABLE</name>
-              <ordinal>1</ordinal>
-              <color>YELLOW</color>
-            </unstableThreshold>
-            <failureThreshold>
-              <name>UNSTABLE</name>
-              <ordinal>1</ordinal>
-              <color>YELLOW</color>
-            </failureThreshold>
-          </block>
-          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
-        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
-      </configs>
-    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
-    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.25">
-      <projectName>package-osx</projectName>
-      <filter>*.dmg</filter>
-      <target></target>
-      <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
-    </hudson.plugins.copyartifact.CopyArtifact>
-    <hudson.tasks.Shell>
-      <command>dotcloud check
-
-cat &gt; dotcloud.yml &lt;&lt; EOF
-www:
-    type: static
-EOF
-
-dotcloud connect download
-
-SSH_LINE=&quot;`dotcloud info www | grep &apos;ssh:&apos;`&quot;
-USERHOSTPORT=&quot;${SSH_LINE#*ssh://}&quot;
-USERHOST=${USERHOSTPORT%:*}
-PORT=${USERHOSTPORT#*:}
-
-scp -P &quot;$PORT&quot; -o &quot;IdentityFile $HOME/.dotcloud_cli/dotcloud.key&quot; rethinkdb-*.dmg &quot;$USERHOST:static/osx/nightly/&quot;
-</command>
-    </hudson.tasks.Shell>
-  </builders>
+  <builders/>
   <publishers/>
   <buildWrappers/>
-</project>
+  <icon/>
+  <dsl>b = build(&quot;package-osx&quot;, BRANCH:&quot;next&quot;)
+build(&quot;upload-osx&quot;, BUILD_NUMBER:b.build.number)
+</dsl>
+</com.cloudbees.plugins.flow.BuildFlow>

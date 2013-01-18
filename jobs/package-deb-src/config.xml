@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Build the dpkg source distributions&#xd;
+&#xd;
+Nodes with the launchpad label need the &apos;RethinkDB Packaging&apos; GPG keys available.</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH</name>
+          <description></description>
+          <defaultValue>next</defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>launchpad</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>[ -d rethinkdb ] || git clone https://github.com/rethinkdb/rethinkdb.git rethinkdb
+
+rm *.dsc *.changes *.build *.tar.gz || true
+
+cd rethinkdb
+
+git fetch origin
+git checkout origin/$BRANCH
+
+for ubrelease in oneiric precise quantal raring ; do
+    make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src
+done
+
+for ubrelease in lucid maverick natty; do
+    make BUILD_PORTABLE=1 UBUNTU_RELEASE=$ubrelease build-deb-src
+done
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>*.dsc, *.changes, *.build, *.tar.gz</artifacts>
+      <latestOnly>false</latestOnly>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
+  <buildWrappers/>
+</project>

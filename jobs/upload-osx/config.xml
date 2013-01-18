@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Upload the result of package-osx to download.rethinkdb.com&#xd;
+&#xd;
+The ssh url was ssh://dotcloud@download-I7KSYN2O.azva.dotcloud.net:21185</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>BUILD_NUMBER</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>dotcloud</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>rm rethinkdb-*.dmg || true</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.25">
+      <projectName>package-osx</projectName>
+      <filter>*.dmg</filter>
+      <target></target>
+      <selector class="hudson.plugins.copyartifact.SpecificBuildSelector">
+        <buildNumber>$BUILD_NUMBER</buildNumber>
+      </selector>
+    </hudson.plugins.copyartifact.CopyArtifact>
+    <hudson.tasks.Shell>
+      <command>test &quot;`sw_vers -productVersion`&quot; == 10.7.5  || (
+  echo OS X builds need to be built on OS X 10.7.5
+  false
+)
+
+# check if dotcloud is configured correctly
+dotcloud check
+
+# generate the dotcloud config file for download.rethinkdb.com
+cat &gt; dotcloud.yml &lt;&lt; EOF
+www:
+    type: static
+EOF
+
+dotcloud connect download
+
+# extract the ssh connection information for connecting to the dotcloud instance
+SSH_LINE=&quot;`dotcloud info www | grep &apos;ssh:&apos;`&quot;
+USERHOSTPORT=&quot;${SSH_LINE#*ssh://}&quot;
+USERHOST=${USERHOSTPORT%:*}
+PORT=${USERHOSTPORT#*:}
+
+# copy the file
+scp -P &quot;$PORT&quot; -o &quot;IdentityFile $HOME/.dotcloud_cli/dotcloud.key&quot; rethinkdb-*.dmg &quot;$USERHOST:static/osx/nightly/&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
