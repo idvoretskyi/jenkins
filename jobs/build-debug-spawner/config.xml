@@ -16,7 +16,7 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name>github</name>
         <refspec></refspec>
-        <url>ssh://git@github.com/rethinkdb/rethinkdb.git</url>
+        <url>https://github.com/rethinkdb/rethinkdb.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>

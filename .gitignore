@@ -1,0 +1,26 @@
+jenkins-cli.jar
+logs
+plugins
+updates
+jobs/*/builds
+jobs/*/lastStable
+jobs/*/lastSuccessful
+jobs/*/nextBuildNumber
+.bash_history
+.cache
+.gitconfig
+.gnupg
+.htoprc
+.ipython
+.lesshst
+.npm
+.owner
+.ssh-ec2
+.ssh
+.vim
+.viminfo
+Workspace clean-up.log
+_removed/
+fingerprints/
+gerrit/
+jobs/*/scm-polling.log

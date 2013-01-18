@@ -1,7 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>This project is launched for each updated branch by build-debug-spawner.&#xd;
+&#xd;
+1. build rethinkdb on linux 64bit, store the result of the build&#xd;
+2. launch test-runner for each test&#xd;
+3. generate an html report of test success/failures</description>
   <logRotator>
     <daysToKeep>7</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -271,6 +275,14 @@ PARENT_NUMBER=$BUILD_NUMBER</properties>
     </hudson.plugins.parameterizedtrigger.BuildTrigger>
   </publishers>
   <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.11">
+      <timeoutMinutes>3</timeoutMinutes>
+      <failBuild>false</failBuild>
+      <writingDescription>false</writingDescription>
+      <timeoutPercentage>200</timeoutPercentage>
+      <timeoutType>elastic</timeoutType>
+      <timeoutMinutesElasticDefault>120</timeoutMinutesElasticDefault>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
     <com.michelin.cio.hudson.plugins.copytoslave.CopyToSlaveBuildWrapper plugin="copy-to-slave@1.4">
       <includes>test_output.html.template,test_results.html.template</includes>
       <excludes></excludes>
