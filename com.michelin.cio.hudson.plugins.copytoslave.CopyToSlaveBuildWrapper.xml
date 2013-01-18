@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.michelin.cio.hudson.plugins.copytoslave.CopyToSlaveBuildWrapper_-DescriptorImpl plugin="copy-to-slave@1.4">
+  <helpRedirect/>
+  <relativeToHomeEnabled>true</relativeToHomeEnabled>
+  <somewhereElseEnabled>false</somewhereElseEnabled>
+</com.michelin.cio.hudson.plugins.copytoslave.CopyToSlaveBuildWrapper_-DescriptorImpl>

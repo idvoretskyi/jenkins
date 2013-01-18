@@ -1,0 +1,35 @@
+<html>
+<head> <title>Build {{ build_id }}: Test {{ test.id }} {{ test.result }} </title> </head>
+<font face="helvetica,arial,sans-serif">
+<style type="text/css">
+
+.output-file-text {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 800px;
+    height: 400px;
+    border: 2px solid black;
+    font-family: monospace;
+}
+
+</style>
+
+<body>
+<h1>Build {{ build_number }}: Test {{ test.id }} {{ test.result }} </h1>
+Duration: {{ test.duration }}
+<br>
+<br>
+Command run on <b>{{ test.node_name }}</b>:<br>
+<code>{{ test.command }}</code>
+<br>
+<br>
+{% for file in test_data %}
+<h2>{{ file.name }}</h2>
+<textarea class="output-file-text" readonly="readonly">{{ file.data }}</textarea>
+<br>
+<br>
+{% endfor %}
+</body>
+</html>

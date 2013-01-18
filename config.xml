@@ -1,0 +1,582 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>1.492</version>
+  <numExecutors>0</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
+  <securityRealm class="hudson.security.SecurityRealm$None"/>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <jdks/>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds>
+    <hudson.plugins.ec2.EC2Cloud plugin="ec2@1.17">
+      <name>ec2-us-west-1</name>
+      <accessId>AKIAJ4I23CBZCBW2NXNQ</accessId>
+      <secretKey>DSyYNV8us1pB1UT5iwBnO6BED7pTPZJ25/Pffk820l0ahUbl9mfP3684E0D29ienyeekrn0vVLAVhEsB6f8K6w==</secretKey>
+      <privateKey>
+        <privateKey>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</privateKey>
+      </privateKey>
+      <instanceCap>5</instanceCap>
+      <templates>
+        <hudson.plugins.ec2.SlaveTemplate>
+          <ami>ami-66694923</ami>
+          <description>ubuntu 11.10 test 64bit</description>
+          <zone>us-west-1c</zone>
+          <securityGroups></securityGroups>
+          <remoteFS>/var/jenkins</remoteFS>
+          <sshPort>22</sshPort>
+          <type>M1Large</type>
+          <labels>ec2 ubuntu11.10 test</labels>
+          <initScript></initScript>
+          <userData></userData>
+          <numExecutors>1</numExecutors>
+          <remoteAdmin>jenkins</remoteAdmin>
+          <rootCommandPrefix>sudo</rootCommandPrefix>
+          <jvmopts></jvmopts>
+          <subnetId></subnetId>
+          <idleTerminationMinutes>2</idleTerminationMinutes>
+          <instanceCap>3</instanceCap>
+          <stopOnTerminate>false</stopOnTerminate>
+          <usePrivateDnsName>false</usePrivateDnsName>
+        </hudson.plugins.ec2.SlaveTemplate>
+        <hudson.plugins.ec2.SlaveTemplate>
+          <ami>ami-0490b141</ami>
+          <description>ubuntu 10.04 build 64bit</description>
+          <zone>us-west-1c</zone>
+          <securityGroups></securityGroups>
+          <remoteFS>/var/jenkins</remoteFS>
+          <sshPort>22</sshPort>
+          <type>M1Large</type>
+          <labels>ec2 ubuntu10.04 build 64bit</labels>
+          <initScript></initScript>
+          <userData></userData>
+          <numExecutors>1</numExecutors>
+          <remoteAdmin>jenkins</remoteAdmin>
+          <rootCommandPrefix>sudo</rootCommandPrefix>
+          <jvmopts></jvmopts>
+          <subnetId></subnetId>
+          <idleTerminationMinutes>2</idleTerminationMinutes>
+          <instanceCap>1</instanceCap>
+          <stopOnTerminate>false</stopOnTerminate>
+          <usePrivateDnsName>false</usePrivateDnsName>
+        </hudson.plugins.ec2.SlaveTemplate>
+        <hudson.plugins.ec2.SlaveTemplate>
+          <ami>ami-7a90b13f</ami>
+          <description>ubuntu 10.04 build 32bit</description>
+          <zone>us-west-1c</zone>
+          <securityGroups></securityGroups>
+          <remoteFS>/var/jenkins</remoteFS>
+          <sshPort>22</sshPort>
+          <type>C1Medium</type>
+          <labels>ec2 ubuntu10.04 build 32bit</labels>
+          <initScript></initScript>
+          <userData></userData>
+          <numExecutors>1</numExecutors>
+          <remoteAdmin>jenkins</remoteAdmin>
+          <rootCommandPrefix>sudo</rootCommandPrefix>
+          <jvmopts></jvmopts>
+          <subnetId></subnetId>
+          <idleTerminationMinutes>2</idleTerminationMinutes>
+          <instanceCap>1</instanceCap>
+          <stopOnTerminate>false</stopOnTerminate>
+          <usePrivateDnsName>false</usePrivateDnsName>
+        </hudson.plugins.ec2.SlaveTemplate>
+      </templates>
+      <region>us-west-1</region>
+    </hudson.plugins.ec2.EC2Cloud>
+  </clouds>
+  <slaves>
+    <slave>
+      <name>deadshot</name>
+      <description></description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>4</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>deadshot.local</host>
+        <port>22</port>
+        <username>jenkins</username>
+        <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
+      </launcher>
+      <label>build ubuntu11.10</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+    </slave>
+    <slave>
+      <name>puzzler</name>
+      <description></description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>puzzler.local</host>
+        <port>22</port>
+        <username>jenkins</username>
+        <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
+      </launcher>
+      <label>ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+    </slave>
+    <slave>
+      <name>magneto</name>
+      <description></description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>magneto.local</host>
+        <port>22</port>
+        <username>jenkins</username>
+        <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
+      </launcher>
+      <label>ubuntu12.04 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+    </slave>
+    <slave>
+      <name>electro</name>
+      <description></description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>electro.local</host>
+        <port>22</port>
+        <username>jenkins</username>
+        <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
+      </launcher>
+      <label>ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+    </slave>
+    <slave>
+      <name>newton</name>
+      <description></description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>3</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>newton.local</host>
+        <port>22</port>
+        <username>jenkins</username>
+        <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
+      </launcher>
+      <label>ubuntu11.10 test dotcloud</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+    </slave>
+    <slave>
+      <name>dr-doom</name>
+      <description>master node</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>10</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>dr-doom.local</host>
+        <port>22</port>
+        <username>jenkins</username>
+        <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
+      </launcher>
+      <label>master launchpad</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+    </slave>
+    <slave>
+      <name>lex-luthor</name>
+      <description>OSX server</description>
+      <remoteFS>/Users/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>lex-luthor.local</host>
+        <port>22</port>
+        <password>Zm7PYIo0nRatb/4NyKpzjQ==</password>
+        <jvmOptions>-Djava.awt.headless=true</jvmOptions>
+      </launcher>
+      <label></label>
+      <nodeProperties>
+        <hudson.tools.ToolLocationNodeProperty>
+          <locations>
+            <hudson.tools.ToolLocationNodeProperty_-ToolLocation>
+              <type>hudson.plugins.git.GitTool$DescriptorImpl</type>
+              <name>Default</name>
+              <home>/usr/local/git/bin/git</home>
+            </hudson.tools.ToolLocationNodeProperty_-ToolLocation>
+          </locations>
+        </hudson.tools.ToolLocationNodeProperty>
+      </nodeProperties>
+      <userId>anonymous</userId>
+    </slave>
+    <slave>
+      <name>the-shadow</name>
+      <description>OSX server</description>
+      <remoteFS>/Users/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>EXCLUSIVE</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>the-shadow.local</host>
+        <port>22</port>
+        <password>Zm7PYIo0nRatb/4NyKpzjQ==</password>
+        <jvmOptions>-Djava.awt.headless=true</jvmOptions>
+      </launcher>
+      <label>osx_build</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+    </slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-3c3c1e65</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-54-241-126-214.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.196.18.72</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-3c3c1e65</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-196-18-72.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-54-241-126-214.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-04 10:09:49.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.196.18.72</privateIpAddress>
+        <publicIpAddress>54.241.126.214</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-49c46a68</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-04 10:09:55.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1357323138323</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-1eecd447</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-10ecd449</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-12ecd44b</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-14ecd44d</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-16ecd44f</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-08ecd451</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS></publicDNS>
+      <privateDNS></privateDNS>
+      <lastFetchTime>0</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+  </slaves>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Builds</name>
+      <description>Debug and Release builds</description>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames class="tree-set">
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>build-debug</string>
+        <string>package-osx</string>
+        <string>package-rpm</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+    </listView>
+    <hudson.plugins.view.dashboard.Dashboard plugin="dashboard-view@2.4">
+      <owner class="hudson" reference="../../.."/>
+      <name>Dashboard</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames class="tree-set">
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView/jobNames/comparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>.*</includeRegex>
+      <useCssStyle>false</useCssStyle>
+      <includeStdJobList>false</includeStdJobList>
+      <leftPortletWidth>50%</leftPortletWidth>
+      <rightPortletWidth>50%</rightPortletWidth>
+      <leftPortlets/>
+      <rightPortlets/>
+      <topPortlets>
+        <hudson.plugins.view.dashboard.builds.LatestBuilds>
+          <id>dashboard_portlet_18149</id>
+          <name>Latest builds</name>
+          <numBuilds>20</numBuilds>
+        </hudson.plugins.view.dashboard.builds.LatestBuilds>
+      </topPortlets>
+      <bottomPortlets>
+        <hudson.plugins.view.dashboard.stats.StatJobs>
+          <id>dashboard_portlet_8191</id>
+          <name>Job statistics</name>
+        </hudson.plugins.view.dashboard.stats.StatJobs>
+      </bottomPortlets>
+    </hudson.plugins.view.dashboard.Dashboard>
+  </views>
+  <primaryView>Builds</primaryView>
+  <slaveAgentPort>0</slaveAgentPort>
+  <label></label>
+  <nodeProperties/>
+  <globalNodeProperties/>
+  <noUsageStatistics>true</noUsageStatistics>
+</hudson>

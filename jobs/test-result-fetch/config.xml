@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Fetches the test output from a test-runner slave,&#xd;
+and stores it in the parent job&apos;s build directory on the master node.</description>
+  <logRotator>
+    <daysToKeep>2</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>PARENT_JOB</name>
+          <description>The parent job of the test-runner job which spawned this</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PARENT_NUMBER</name>
+          <description>The unique id of the parent job instance</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TEST_ID</name>
+          <description>The test id assigned to the test runner job that spawned this job</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TEST_HOST</name>
+          <description>The host machine for the test runner job that spawned this job</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>WORKING_DIR</name>
+          <description>The working directory for the job on the remote machine, from which to copy the test_data/* files</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>master</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env bash
+mkdir ~/jobs/$PARENT_JOB/builds/$PARENT_NUMBER/test_data
+rsync -v -e &quot;ssh -o StrictHostKeyChecking=no -i $JENKINS_HOME/.ssh-ec2/id_rsa -i $JENKINS_HOME/.ssh/id_rsa&quot; $TEST_HOST:$WORKING_DIR/test_data/* ~/jobs/$PARENT_JOB/builds/$PARENT_NUMBER/test_data/$TEST_ID/</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

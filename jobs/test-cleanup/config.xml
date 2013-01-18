@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Cleans up test results and stores any core files</description>
+  <logRotator>
+    <daysToKeep>2</daysToKeep>
+    <numToKeep>-1</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>PARENT_JOB</name>
+          <description>The parent build job to clean up test_data folder for</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PARENT_NUMBER</name>
+          <description>The unique id of the parent build job to clean up test_data folder for</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>master</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env python
+import os, shutil, fileinput, sys
+
+def move_core_files(source_dir):
+  core_files = []
+  # Find all core files and move them to the archive directory with unique names
+  for directory, subdirectories, dummy in os.walk(source_dir):
+    for subdir in subdirectories:
+      for test_dir, test_subdirs, files in os.walk(&quot;%s/%s&quot; % (source_dir, subdir)):
+        for filename in files:
+          if filename == &quot;core&quot;:
+            core_filename = &quot;%s_%s&quot; % (filename, test_dir.split(&quot;/&quot;)[1])
+            shutil.move(&quot;%s/%s&quot; % (test_dir, filename), &quot;archive/%s&quot; % core_filename)
+            core_files.append(core_filename)
+
+  # Remove the test_data directory tree    
+  shutil.rmtree(source_dir)
+  return core_files
+
+def modify_test_report(core_files, html_file, parent_job, parent_number):
+  # Build the string to insert into the test_results.html file
+  html_string = &quot;&lt;br&gt;%d core files found:&lt;br&gt;&quot; % len(core_files)
+  for core_file in core_files:
+    html_string = html_string + &apos;&lt;a href=&quot;/job/%s/%s/archive/%s&quot;&gt;%s&lt;/a&gt;: &apos; % (parent_job, parent_number, core_file, core_file)
+    html_string = html_string + &apos;jenkins@dr-doom.local:~/jobs/%s/builds/%s/archive/%s&lt;br&gt;&apos; % (parent_job, parent_number, core_file)
+  html_string = html_string + &quot;&lt;br&gt;&quot; 
+
+  # Add links to the html output about the core files
+  added_links = False
+  for line in fileinput.input(html_file, inplace = 1):
+    if line.find(&quot;&lt;table class=&quot;) != -1:
+      added_links = True
+      print html_string,
+    print line,
+
+  if not added_links:
+    print &quot;Failed to add core file links to &quot; + html_file
+
+def main():
+  # Load job parameters
+  parent_job = os.environ[&quot;PARENT_JOB&quot;]
+  parent_number = os.environ[&quot;PARENT_NUMBER&quot;]
+  home_dir = os.environ[&quot;JENKINS_HOME&quot;]
+
+  # Go to the folder with the test results
+  os.chdir(&quot;%s/jobs/%s/builds/%s&quot; % (home_dir, parent_job, parent_number))
+  core_files = move_core_files(&quot;test_data&quot;)
+  
+  print &quot;Core files: &quot; + str(core_files)
+  if len(core_files) != 0:
+    modify_test_report(core_files, &quot;htmlreports/Test_Results/test_results.html&quot;, parent_job, parent_number)
+
+if __name__ == &quot;__main__&quot;:
+    main()</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

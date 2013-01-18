@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Runs a single test, based on the given parameters</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>TEST_COMMAND</name>
+          <description>The test to run, return value indicates success/failure</description>
+          <defaultValue>echo &quot;No test specified&quot;</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PARENT_JOB</name>
+          <description>The job that launched this job</description>
+          <defaultValue>unknown</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PARENT_NUMBER</name>
+          <description>The id of the job that launched this job</description>
+          <defaultValue>unknown</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TEST_ID</name>
+          <description>The id of this test</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>test</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>true</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env bash
+
+echo &quot;Test &apos;$TEST_ID&apos; launched by $PARENT_JOB:$PARENT_NUMBER&quot;
+
+if [ -z &quot;$TEST_ID&quot; ]; then
+    echo &quot;TEST_ID not specified&quot;
+    exit 1
+fi
+
+#echo &quot;Cleaning directory&quot;
+ls -1 | grep -v &quot;build_output.tar.gz&quot; | grep -v &quot;test.tar.gz&quot; | xargs rm -rf
+
+# Set parameters for the post-job fetch to find this working directory
+# Determine if dr-doom is reachable
+ping dr-doom.local -c 1
+
+if [[ $? -ne 0 ]]; then
+  # Must be an EC2 instance, get our external hostname with trickery
+  echo &quot;dr-doom not found, getting hostname from amazon DNS&quot;
+  TEST_HOST=`curl -s http://169.254.169.254/latest/meta-data/public-hostname`
+else
+  # Local machine, just use our hostname
+  TEST_HOST=`hostname`
+fi
+
+WORKING_DIR=`pwd`
+
+echo &quot;TEST_HOST=$TEST_HOST&quot; &gt; fetch_params
+echo &quot;WORKING_DIR=$WORKING_DIR&quot; &gt;&gt; fetch_params</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.16">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>PARENT_JOB=$PARENT_JOB
+PARENT_NUMBER=$PARENT_NUMBER</properties>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+            <hudson.plugins.parameterizedtrigger.FileBuildParameters>
+              <propertiesFile>fetch_params</propertiesFile>
+            </hudson.plugins.parameterizedtrigger.FileBuildParameters>
+          </configs>
+          <projects>test-setup</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <block>
+            <buildStepFailureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+            </buildStepFailureThreshold>
+            <unstableThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+            </unstableThreshold>
+          </block>
+          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
+        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env bash
+
+# Set up test environment, we should have two archives from the parent build
+tar xzvf build_output.tar.gz &gt; /dev/null
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
+tar xzvf test.tar.gz &gt; /dev/null
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
+rm -rf test_data; mkdir test_data</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env python
+
+import os
+from subprocess import call
+from datetime import timedelta
+from time import time
+
+def format_time(time_before, time_after):
+  seconds = time_after - time_before
+  td = timedelta(seconds = seconds)
+
+  hours = (td.days * 24) + (td.seconds / (60 * 60))
+  minutes = (td.seconds / 60) % 60
+  seconds = td.seconds % 60
+
+  result = &quot;&quot;
+  if hours &gt; 0:
+    result = &quot;%s%02d&quot; % (result, hours) + &quot;:&quot;
+  result = &quot;%s%02d&quot; % (result, minutes) + &quot;:&quot;
+  result = &quot;%s%02d&quot; % (result, seconds)
+  return result
+
+def main():
+  os.chdir(&quot;test_data&quot;)
+  result_string_file = open(&quot;result_string&quot;, &apos;w&apos;)
+  command = os.environ[&quot;TEST_COMMAND&quot;]
+  test_id = os.environ[&quot;TEST_ID&quot;]
+  runner_id = os.environ[&quot;BUILD_NUMBER&quot;]
+  executor_id = int(os.environ[&quot;EXECUTOR_NUMBER&quot;])
+  node_name = os.environ[&quot;NODE_NAME&quot;]
+  port_offset = 1060 + executor_id * 100
+  os.putenv(&quot;HOST&quot;, &quot;localhost&quot;)
+  os.putenv(&quot;RETHINKDB_PORT_OFFSET&quot;, str(port_offset))
+  os.putenv(&quot;PORT&quot;, str(port_offset + 28015))
+
+  console_out_file = open(&quot;console_out&quot;, &apos;w&apos;)
+  time_before = time()
+  result = call([&quot;bash&quot;, &quot;-c&quot;, command], stdout=console_out_file, stderr=console_out_file)
+  time_taken = format_time(time_before, time())
+  print &quot;Time taken: &quot; + time_taken
+
+  if result == 0:
+    ok_fail = &quot;OK&quot;
+  else:
+    ok_fail = &quot;FAIL&quot;
+
+  result_string = &quot;%s %s %s %s %s %s&quot; % (ok_fail, node_name, runner_id, test_id, time_taken, command)
+  result_string_file.write(result_string + &quot;\n&quot;)
+  print &quot;Result string: %s&quot; % result_string
+
+if __name__ == &quot;__main__&quot;:
+    main()</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.16">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>PARENT_JOB=$PARENT_JOB
+PARENT_NUMBER=$PARENT_NUMBER
+TEST_ID=$TEST_ID</properties>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+            <hudson.plugins.parameterizedtrigger.FileBuildParameters>
+              <propertiesFile>fetch_params</propertiesFile>
+            </hudson.plugins.parameterizedtrigger.FileBuildParameters>
+          </configs>
+          <projects>test-result-fetch</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <block>
+            <buildStepFailureThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+            </buildStepFailureThreshold>
+            <unstableThreshold>
+              <name>FAILURE</name>
+              <ordinal>2</ordinal>
+              <color>RED</color>
+            </unstableThreshold>
+          </block>
+          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
+        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env bash
+# Exit with code based on if the test failed or suceeded
+cat test_data/result_string | grep -q &quot;^OK &quot;
+exit $?</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
