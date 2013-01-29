@@ -4,6 +4,12 @@
   <description>Upload the result of package-osx to download.rethinkdb.com&#xd;
 &#xd;
 The ssh url was ssh://dotcloud@download-I7KSYN2O.azva.dotcloud.net:21185</description>
+  <logRotator>
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>5</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
@@ -13,6 +19,11 @@ The ssh url was ssh://dotcloud@download-I7KSYN2O.azva.dotcloud.net:21185</descri
           <description></description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>RELEASE</name>
+          <description>Set to true if uploading a new release</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -37,12 +48,7 @@ The ssh url was ssh://dotcloud@download-I7KSYN2O.azva.dotcloud.net:21185</descri
       </selector>
     </hudson.plugins.copyartifact.CopyArtifact>
     <hudson.tasks.Shell>
-      <command>test &quot;`sw_vers -productVersion`&quot; == 10.7.5  || (
-  echo OS X builds need to be built on OS X 10.7.5
-  false
-)
-
-# check if dotcloud is configured correctly
+      <command># check if dotcloud is configured correctly
 dotcloud check
 
 # generate the dotcloud config file for download.rethinkdb.com
@@ -59,8 +65,14 @@ USERHOSTPORT=&quot;${SSH_LINE#*ssh://}&quot;
 USERHOST=${USERHOSTPORT%:*}
 PORT=${USERHOSTPORT#*:}
 
+if $RELEASE; then
+  WHERE=
+else
+  WHERE=nightly/
+fi
+
 # copy the file
-scp -P &quot;$PORT&quot; -o &quot;IdentityFile $HOME/.dotcloud_cli/dotcloud.key&quot; rethinkdb-*.dmg &quot;$USERHOST:static/osx/nightly/&quot;</command>
+scp -P &quot;$PORT&quot; -o &quot;IdentityFile $HOME/.dotcloud_cli/dotcloud.key&quot; rethinkdb-*.dmg &quot;$USERHOST:static/osx/$WHERE&quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

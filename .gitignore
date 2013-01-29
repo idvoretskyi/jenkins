@@ -26,3 +26,4 @@ gerrit/
 jobs/*/scm-polling.log
 .subversion/
 Fingerprint cleanup.log
+config-history/

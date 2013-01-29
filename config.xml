@@ -95,7 +95,7 @@
       <name>deadshot</name>
       <description></description>
       <remoteFS>/var/jenkins</remoteFS>
-      <numExecutors>4</numExecutors>
+      <numExecutors>12</numExecutors>
       <mode>EXCLUSIVE</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
@@ -104,7 +104,7 @@
         <username>jenkins</username>
         <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
       </launcher>
-      <label>build ubuntu11.10</label>
+      <label>build ubuntu11.10 test</label>
       <nodeProperties/>
       <userId>anonymous</userId>
     </slave>
@@ -112,7 +112,7 @@
       <name>puzzler</name>
       <description></description>
       <remoteFS>/var/jenkins</remoteFS>
-      <numExecutors>1</numExecutors>
+      <numExecutors>6</numExecutors>
       <mode>NORMAL</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
@@ -129,7 +129,7 @@
       <name>magneto</name>
       <description></description>
       <remoteFS>/var/jenkins</remoteFS>
-      <numExecutors>1</numExecutors>
+      <numExecutors>6</numExecutors>
       <mode>EXCLUSIVE</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
@@ -146,7 +146,7 @@
       <name>electro</name>
       <description></description>
       <remoteFS>/var/jenkins</remoteFS>
-      <numExecutors>1</numExecutors>
+      <numExecutors>12</numExecutors>
       <mode>EXCLUSIVE</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
@@ -172,7 +172,7 @@
         <username>jenkins</username>
         <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
       </launcher>
-      <label>ubuntu11.10 test dotcloud</label>
+      <label>ubuntu11.10 dotcloud</label>
       <nodeProperties/>
       <userId>anonymous</userId>
     </slave>
@@ -317,126 +317,6 @@
       <lastFetchTime>1357323138323</lastFetchTime>
       <sshPort>22</sshPort>
     </hudson.plugins.ec2.EC2Slave>
-    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
-      <name>i-a4655ffd</name>
-      <description>ubuntu 11.10 test 64bit</description>
-      <remoteFS>/var/jenkins</remoteFS>
-      <numExecutors>1</numExecutors>
-      <mode>NORMAL</mode>
-      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
-        <idleTerminationMinutes>2</idleTerminationMinutes>
-      </retentionStrategy>
-      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
-        <FAILED>-1</FAILED>
-        <SAMEUSER>0</SAMEUSER>
-        <RECONNECT>-2</RECONNECT>
-      </launcher>
-      <label>ec2 ubuntu11.10 test</label>
-      <nodeProperties/>
-      <userId>anonymous</userId>
-      <initScript></initScript>
-      <remoteAdmin>jenkins</remoteAdmin>
-      <rootCommandPrefix>sudo</rootCommandPrefix>
-      <jvmopts></jvmopts>
-      <stopOnTerminate>false</stopOnTerminate>
-      <idleTerminationMinutes>2</idleTerminationMinutes>
-      <usePrivateDnsName>false</usePrivateDnsName>
-      <tags class="linked-list"/>
-      <publicDNS></publicDNS>
-      <privateDNS></privateDNS>
-      <lastFetchTime>0</lastFetchTime>
-      <sshPort>22</sshPort>
-    </hudson.plugins.ec2.EC2Slave>
-    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
-      <name>i-b4576ded</name>
-      <description>ubuntu 11.10 test 64bit</description>
-      <remoteFS>/var/jenkins</remoteFS>
-      <numExecutors>1</numExecutors>
-      <mode>NORMAL</mode>
-      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
-        <idleTerminationMinutes>2</idleTerminationMinutes>
-      </retentionStrategy>
-      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
-        <FAILED>-1</FAILED>
-        <SAMEUSER>0</SAMEUSER>
-        <RECONNECT>-2</RECONNECT>
-      </launcher>
-      <label>ec2 ubuntu11.10 test</label>
-      <nodeProperties/>
-      <userId>anonymous</userId>
-      <initScript></initScript>
-      <remoteAdmin>jenkins</remoteAdmin>
-      <rootCommandPrefix>sudo</rootCommandPrefix>
-      <jvmopts></jvmopts>
-      <stopOnTerminate>false</stopOnTerminate>
-      <idleTerminationMinutes>2</idleTerminationMinutes>
-      <usePrivateDnsName>false</usePrivateDnsName>
-      <tags class="linked-list"/>
-      <publicDNS></publicDNS>
-      <privateDNS></privateDNS>
-      <lastFetchTime>0</lastFetchTime>
-      <sshPort>22</sshPort>
-    </hudson.plugins.ec2.EC2Slave>
-    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
-      <name>i-b6576def</name>
-      <description>ubuntu 11.10 test 64bit</description>
-      <remoteFS>/var/jenkins</remoteFS>
-      <numExecutors>1</numExecutors>
-      <mode>NORMAL</mode>
-      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
-        <idleTerminationMinutes>2</idleTerminationMinutes>
-      </retentionStrategy>
-      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
-        <FAILED>-1</FAILED>
-        <SAMEUSER>0</SAMEUSER>
-        <RECONNECT>-2</RECONNECT>
-      </launcher>
-      <label>ec2 ubuntu11.10 test</label>
-      <nodeProperties/>
-      <userId>anonymous</userId>
-      <initScript></initScript>
-      <remoteAdmin>jenkins</remoteAdmin>
-      <rootCommandPrefix>sudo</rootCommandPrefix>
-      <jvmopts></jvmopts>
-      <stopOnTerminate>false</stopOnTerminate>
-      <idleTerminationMinutes>2</idleTerminationMinutes>
-      <usePrivateDnsName>false</usePrivateDnsName>
-      <tags class="linked-list"/>
-      <publicDNS></publicDNS>
-      <privateDNS></privateDNS>
-      <lastFetchTime>0</lastFetchTime>
-      <sshPort>22</sshPort>
-    </hudson.plugins.ec2.EC2Slave>
-    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
-      <name>i-a8576df1</name>
-      <description>ubuntu 11.10 test 64bit</description>
-      <remoteFS>/var/jenkins</remoteFS>
-      <numExecutors>1</numExecutors>
-      <mode>NORMAL</mode>
-      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
-        <idleTerminationMinutes>2</idleTerminationMinutes>
-      </retentionStrategy>
-      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
-        <FAILED>-1</FAILED>
-        <SAMEUSER>0</SAMEUSER>
-        <RECONNECT>-2</RECONNECT>
-      </launcher>
-      <label>ec2 ubuntu11.10 test</label>
-      <nodeProperties/>
-      <userId>anonymous</userId>
-      <initScript></initScript>
-      <remoteAdmin>jenkins</remoteAdmin>
-      <rootCommandPrefix>sudo</rootCommandPrefix>
-      <jvmopts></jvmopts>
-      <stopOnTerminate>false</stopOnTerminate>
-      <idleTerminationMinutes>2</idleTerminationMinutes>
-      <usePrivateDnsName>false</usePrivateDnsName>
-      <tags class="linked-list"/>
-      <publicDNS></publicDNS>
-      <privateDNS></privateDNS>
-      <lastFetchTime>0</lastFetchTime>
-      <sshPort>22</sshPort>
-    </hudson.plugins.ec2.EC2Slave>
   </slaves>
   <quietPeriod>5</quietPeriod>
   <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
@@ -534,6 +414,30 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <includeRegex>test-.*</includeRegex>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Release</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames class="tree-set">
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+        <string>release-drivers</string>
+        <string>release-launchpad</string>
+        <string>release-osx</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>release-.*</includeRegex>
     </listView>
   </views>
   <primaryView>Builds</primaryView>

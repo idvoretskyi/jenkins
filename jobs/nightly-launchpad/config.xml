@@ -16,10 +16,16 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders/>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.Mailer>
+      <recipients>devops@rethinkdb.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
   <buildWrappers/>
   <icon/>
   <dsl>b = build(&quot;package-deb-src&quot;, BRANCH:&quot;next&quot;)
-build(&quot;upload-deb-src&quot;, BUILD_NUMBER:b.build.number)
+build(&quot;upload-launchpad&quot;, BUILD_NUMBER:b.build.number)
 </dsl>
 </com.cloudbees.plugins.flow.BuildFlow>

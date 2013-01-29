@@ -9,9 +9,19 @@ Nodes with the launchpad label need the &apos;RethinkDB Packaging&apos; GPG keys
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>BRANCH</name>
+          <name>GIT_REF</name>
           <description></description>
           <defaultValue>next</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>UBUNTU_RELEASES_REGULAR</name>
+          <description></description>
+          <defaultValue>oneiric precise quantal raring</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>UBUNTU_RELEASES_PORTABLE</name>
+          <description></description>
+          <defaultValue>lucid maverick natty</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -32,17 +42,17 @@ rm *.dsc *.changes *.build *.tar.gz || true
 
 cd rethinkdb
 
-git fetch origin
-git checkout origin/$BRANCH
+git checkout --detach
+git fetch origin &quot;$GIT_REF&quot;
+git checkout -B &quot;$GIT_REF&quot; FETCH_HEAD
 
-for ubrelease in oneiric precise quantal raring ; do
+for ubrelease in $UBUNTU_RELEASES_REGULAR ; do
     make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src
 done
 
-for ubrelease in lucid maverick natty; do
+for ubrelease in $UBUNTU_RELEASES_PORTABLE; do
     make BUILD_PORTABLE=1 UBUNTU_RELEASE=$ubrelease build-deb-src
-done
-</command>
+done</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

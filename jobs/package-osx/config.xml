@@ -13,53 +13,14 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>BRANCH</name>
-          <description>The branch to build.</description>
+          <name>GIT_REF</name>
+          <description></description>
           <defaultValue>next</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.26">
-    <configVersion>2</configVersion>
-    <userRemoteConfigs>
-      <hudson.plugins.git.UserRemoteConfig>
-        <name>github</name>
-        <refspec></refspec>
-        <url>https://github.com/rethinkdb/rethinkdb.git</url>
-      </hudson.plugins.git.UserRemoteConfig>
-    </userRemoteConfigs>
-    <branches>
-      <hudson.plugins.git.BranchSpec>
-        <name>$BRANCH</name>
-      </hudson.plugins.git.BranchSpec>
-    </branches>
-    <disableSubmodules>false</disableSubmodules>
-    <recursiveSubmodules>false</recursiveSubmodules>
-    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-    <authorOrCommitter>false</authorOrCommitter>
-    <clean>false</clean>
-    <wipeOutWorkspace>false</wipeOutWorkspace>
-    <pruneBranches>false</pruneBranches>
-    <remotePoll>false</remotePoll>
-    <ignoreNotifyCommit>false</ignoreNotifyCommit>
-    <useShallowClone>false</useShallowClone>
-    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
-    <gitTool>Default</gitTool>
-    <browser class="hudson.plugins.git.browser.GithubWeb">
-      <url>https://github.com/rethinkdb/rethinkdb/</url>
-    </browser>
-    <submoduleCfg class="list"/>
-    <relativeTargetDir></relativeTargetDir>
-    <reference></reference>
-    <excludedRegions></excludedRegions>
-    <excludedUsers></excludedUsers>
-    <gitConfigName></gitConfigName>
-    <gitConfigEmail></gitConfigEmail>
-    <skipTag>false</skipTag>
-    <includedRegions></includedRegions>
-    <scmName></scmName>
-  </scm>
+  <scm class="hudson.scm.NullSCM"/>
   <assignedNode>osx_build</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
@@ -69,16 +30,24 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>#!/usr/bin/env bash
+      <command>test &quot;`sw_vers -productVersion`&quot; == 10.7.5  || (
+  echo OS X builds need to be built on OS X 10.7.5
+  false
+)
 
 # This shouldn&apos;t really be here, but it works
 PATH=/usr/local/git/bin:/usr/local/share/npm/bin:/usr/local/bin:$PATH
 
+test -d .git || ( git init &amp;&amp; git remote add origin https://github.com/rethinkdb/rethinkdb.git )
+
+git fetch origin $GIT_REF
+git checkout -f FETCH_HEAD
+
 # Clean any artifacts from previous builds
-rm -f build_output.tar.gz
-rm *.dmg
+rm -f build_output.tar.gz || true
+rm *.dmg || true
 cd src; make clean; cd -
-rm -rf build
+rm -rf build || true
 make osx
 
 # rename the dmg
