@@ -41,6 +41,8 @@
     <hudson.tasks.Shell>
       <command>#!/usr/bin/env bash
 
+set -x
+
 echo &quot;Test &apos;$TEST_ID&apos; launched by $PARENT_JOB:$PARENT_NUMBER&quot;
 
 if [ -z &quot;$TEST_ID&quot; ]; then

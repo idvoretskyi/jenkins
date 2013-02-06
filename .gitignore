@@ -6,6 +6,7 @@ jobs/*/builds
 jobs/*/lastStable
 jobs/*/lastSuccessful
 jobs/*/nextBuildNumber
+jobs/*/configurations
 .bash_history
 .cache
 .gitconfig

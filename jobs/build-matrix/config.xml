@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<matrix-project>
+  <actions/>
+  <description>Build on permutations of given build options and platforms</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <axes>
+    <hudson.matrix.LabelAxis>
+      <name>OS</name>
+      <values>
+        <string>build</string>
+        <string>osx_build</string>
+        <string>ubuntu10.04</string>
+        <string>ubuntu11.10</string>
+      </values>
+    </hudson.matrix.LabelAxis>
+    <hudson.matrix.TextAxis>
+      <name>DEBUG</name>
+      <values>
+        <string>0</string>
+        <string>1</string>
+      </values>
+    </hudson.matrix.TextAxis>
+    <hudson.matrix.TextAxis>
+      <name>MOCK_CACHE_CHECK</name>
+      <values>
+        <string>0</string>
+        <string>1</string>
+      </values>
+    </hudson.matrix.TextAxis>
+    <hudson.matrix.TextAxis>
+      <name>NO_EPOLL</name>
+      <values>
+        <string>0</string>
+        <string>1</string>
+      </values>
+    </hudson.matrix.TextAxis>
+    <hudson.matrix.TextAxis>
+      <name>VALGRIND</name>
+      <values>
+        <string>0</string>
+        <string>1</string>
+      </values>
+    </hudson.matrix.TextAxis>
+    <hudson.matrix.TextAxis>
+      <name>AIOSUPPORT</name>
+      <values>
+        <string>0</string>
+        <string>1</string>
+      </values>
+    </hudson.matrix.TextAxis>
+  </axes>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo OS $OS DEBUG $DEBUG MOCK_CACHE_CHECK $MOCK_CACHE_CHECK NO_EPOLL $NO_EPOLL VALGRIND $VALGRIND AIOSUPPORT $AIOSUPPORT</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.11">
+      <timeoutMinutes>3</timeoutMinutes>
+      <failBuild>false</failBuild>
+      <writingDescription>false</writingDescription>
+      <timeoutPercentage>150</timeoutPercentage>
+      <timeoutType>elastic</timeoutType>
+      <timeoutMinutesElasticDefault>300</timeoutMinutesElasticDefault>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+  </buildWrappers>
+  <executionStrategy class="hudson.matrix.DefaultMatrixExecutionStrategyImpl">
+    <runSequentially>false</runSequentially>
+  </executionStrategy>
+</matrix-project>

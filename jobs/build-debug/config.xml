@@ -21,6 +21,11 @@
           <description>The branch to build.</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>EMAIL</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -219,6 +224,9 @@ def main():
                       git_info,
                       test_results)
 
+  if not os.path.exists(&quot;tests&quot;):
+    os.mkdir(&quot;tests&quot;)
+
   for test in test_results:
     test_data = []
     console_out = []
@@ -269,6 +277,22 @@ PARENT_NUMBER=$BUILD_NUMBER</properties>
           </configs>
           <projects>test-cleanup</projects>
           <condition>UNSTABLE_OR_BETTER</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.git.GitRevisionBuildParameters plugin="git@1.1.26">
+              <combineQueuedCommits>false</combineQueuedCommits>
+            </hudson.plugins.git.GitRevisionBuildParameters>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>PARENT_JOB=$JOB_NAME
+PARENT_NUMBER=$BUILD_NUMBER
+EMAIL=$EMAIL
+SUBJECT=Failed tests</properties>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>notify-result</projects>
+          <condition>UNSTABLE_OR_WORSE</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
       </configs>

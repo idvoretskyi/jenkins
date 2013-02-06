@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.cloudbees.plugins.flow.BuildFlow plugin="build-flow-plugin@0.7">
+  <actions/>
+  <description>Run the full tests and builds</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector">
+    <hudson.triggers.TimerTrigger>
+      <spec>0 0 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+  <icon/>
+  <dsl>ignore(FAILURE) {
+  b = build(&quot;build-debug&quot;, BRANCH: &quot;next&quot;, EMAIL: &quot;disable&quot;)
+}
+
+build(&quot;notify-result&quot;, EMAIL: &quot;all@rethinkdb.com&quot;, SUBJECT: &quot;Testing new nightly tests&quot;, PARENT_JOB: &quot;build-debug&quot;, PARENT_NUMBER: b.build.number)</dsl>
+</com.cloudbees.plugins.flow.BuildFlow>

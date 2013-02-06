@@ -172,7 +172,7 @@
         <username>jenkins</username>
         <password>IKqsoRQXVL9Ph9e3Qi6E5K8lX0ZJWE0EAIihGYzvz18=</password>
       </launcher>
-      <label>ubuntu11.10 dotcloud</label>
+      <label>ubuntu11.10 dotcloud sendmail</label>
       <nodeProperties/>
       <userId>anonymous</userId>
     </slave>
@@ -317,6 +317,886 @@
       <lastFetchTime>1357323138323</lastFetchTime>
       <sshPort>22</sshPort>
     </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-1e766047</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-54-241-56-230.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.170.182.110</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-1e766047</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-170-182-110.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-54-241-56-230.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 15:29:49.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.170.182.110</privateIpAddress>
+        <publicIpAddress>54.241.56.230</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-0cdf422d</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 15:29:57.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359588736706</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-1c766045</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-204-236-179-25.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.171.58.77</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-1c766045</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-171-58-77.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-204-236-179-25.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 15:29:49.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.171.58.77</privateIpAddress>
+        <publicIpAddress>204.236.179.25</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-11df4230</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 15:29:53.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359588741529</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-10766049</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-50-18-92-156.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.170.197.47</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-10766049</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-170-197-47.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-50-18-92-156.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 15:29:49.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.170.197.47</privateIpAddress>
+        <publicIpAddress>50.18.92.156</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-12df4233</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 15:29:54.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359588739873</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-caccda93</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-50-18-38-233.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.196.25.93</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-caccda93</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-196-25-93.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-50-18-38-233.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 21:29:28.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.196.25.93</privateIpAddress>
+        <publicIpAddress>50.18.38.233</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-3ea13c1f</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 21:29:34.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359610350998</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-ccccda95</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-54-241-80-86.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.197.17.185</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-ccccda95</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-197-17-185.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-54-241-80-86.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 21:29:28.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.197.17.185</privateIpAddress>
+        <publicIpAddress>54.241.80.86</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-37a13c16</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 21:29:34.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359610350513</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-d6ccda8f</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-50-18-5-142.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.197.8.155</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-d6ccda8f</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-197-8-155.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-50-18-5-142.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 21:29:28.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.197.8.155</privateIpAddress>
+        <publicIpAddress>50.18.5.142</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-32a13c13</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 21:29:33.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359610346706</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-ceccda97</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-204-236-140-103.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.197.21.113</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-ceccda97</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-197-21-113.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-204-236-140-103.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 21:29:28.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.197.21.113</privateIpAddress>
+        <publicIpAddress>204.236.140.103</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-03a13c22</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 21:29:35.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359610351615</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-c0ccda99</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-50-18-244-214.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.197.9.100</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-c0ccda99</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-197-9-100.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-50-18-244-214.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 21:29:29.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.197.9.100</privateIpAddress>
+        <publicIpAddress>50.18.244.214</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-38a13c19</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 21:29:34.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359610352218</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-c4ccda9d</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-54-241-50-180.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.196.19.84</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-c4ccda9d</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-196-19-84.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-54-241-50-180.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 21:29:29.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.196.19.84</privateIpAddress>
+        <publicIpAddress>54.241.50.180</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-2ca13c0d</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 21:29:33.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359610353130</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-c2ccda9b</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-184-169-223-196.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.197.31.158</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-c2ccda9b</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-197-31-158.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-184-169-223-196.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 21:29:29.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.197.31.158</privateIpAddress>
+        <publicIpAddress>184.169.223.196</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-2ba13c0a</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 21:29:33.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359610352723</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
+    <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <name>i-c6ccda9f</name>
+      <description>ubuntu 11.10 test 64bit</description>
+      <remoteFS>/var/jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.plugins.ec2.EC2RetentionStrategy">
+        <idleTerminationMinutes>2</idleTerminationMinutes>
+      </retentionStrategy>
+      <launcher class="hudson.plugins.ec2.ssh.EC2UnixLauncher">
+        <FAILED>-1</FAILED>
+        <SAMEUSER>0</SAMEUSER>
+        <RECONNECT>-2</RECONNECT>
+      </launcher>
+      <label>ec2 ubuntu11.10 test</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+      <initScript></initScript>
+      <remoteAdmin>jenkins</remoteAdmin>
+      <rootCommandPrefix>sudo</rootCommandPrefix>
+      <jvmopts></jvmopts>
+      <stopOnTerminate>false</stopOnTerminate>
+      <idleTerminationMinutes>2</idleTerminationMinutes>
+      <usePrivateDnsName>false</usePrivateDnsName>
+      <tags class="linked-list"/>
+      <publicDNS>ec2-50-18-243-184.us-west-1.compute.amazonaws.com</publicDNS>
+      <privateDNS>10.197.7.254</privateDNS>
+      <lastFetchInstance>
+        <instanceId>i-c6ccda9f</instanceId>
+        <imageId>ami-66694923</imageId>
+        <state>
+          <code>16</code>
+          <name>running</name>
+        </state>
+        <privateDnsName>ip-10-197-7-254.us-west-1.compute.internal</privateDnsName>
+        <publicDnsName>ec2-50-18-243-184.us-west-1.compute.amazonaws.com</publicDnsName>
+        <stateTransitionReason></stateTransitionReason>
+        <keyName>jenkins</keyName>
+        <amiLaunchIndex>0</amiLaunchIndex>
+        <instanceType>m1.large</instanceType>
+        <launchTime>2013-01-30 21:29:29.0 PST</launchTime>
+        <placement>
+          <availabilityZone>us-west-1c</availabilityZone>
+          <groupName></groupName>
+          <tenancy>default</tenancy>
+        </placement>
+        <kernelId>aki-8d396bc8</kernelId>
+        <monitoring>
+          <state>disabled</state>
+        </monitoring>
+        <privateIpAddress>10.197.7.254</privateIpAddress>
+        <publicIpAddress>50.18.243.184</publicIpAddress>
+        <architecture>x86_64</architecture>
+        <rootDeviceType>ebs</rootDeviceType>
+        <rootDeviceName>/dev/sda1</rootDeviceName>
+        <blockDeviceMappings>
+          <com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+            <deviceName>/dev/sda1</deviceName>
+            <ebs>
+              <volumeId>vol-31a13c10</volumeId>
+              <status>attached</status>
+              <attachTime>2013-01-30 21:29:33.0 PST</attachTime>
+              <deleteOnTermination>true</deleteOnTermination>
+            </ebs>
+          </com.amazonaws.services.ec2.model.InstanceBlockDeviceMapping>
+        </blockDeviceMappings>
+        <virtualizationType>paravirtual</virtualizationType>
+        <clientToken></clientToken>
+        <tags/>
+        <securityGroups>
+          <com.amazonaws.services.ec2.model.GroupIdentifier>
+            <groupName>default</groupName>
+            <groupId>sg-5805191d</groupId>
+          </com.amazonaws.services.ec2.model.GroupIdentifier>
+        </securityGroups>
+        <hypervisor>xen</hypervisor>
+      </lastFetchInstance>
+      <lastFetchTime>1359610353514</lastFetchTime>
+      <sshPort>22</sshPort>
+    </hudson.plugins.ec2.EC2Slave>
   </slaves>
   <quietPeriod>5</quietPeriod>
   <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
@@ -337,6 +1217,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames class="tree-set">
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>build-matrix</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -360,6 +1241,7 @@
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>nightly-launchpad</string>
         <string>nightly-osx</string>
+        <string>nightly-tests</string>
       </jobNames>
       <jobFilters/>
       <columns>

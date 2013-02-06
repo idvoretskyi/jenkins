@@ -72,7 +72,15 @@ else
 fi
 
 # copy the file
-scp -P &quot;$PORT&quot; -o &quot;IdentityFile $HOME/.dotcloud_cli/dotcloud.key&quot; rethinkdb-*.dmg &quot;$USERHOST:static/osx/$WHERE&quot;</command>
+i=0
+while ! scp -P &quot;$PORT&quot; -o &quot;IdentityFile $HOME/.dotcloud_cli/dotcloud.key&quot; rethinkdb-*.dmg &quot;$USERHOST:static/osx/$WHERE&quot;; do
+  i=$((i+1))
+  if [ &quot;$i&quot; -eq 3 ]; then
+    exit 1
+  else
+    sleep 30
+  fi
+done</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

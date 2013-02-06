@@ -47,6 +47,8 @@ Especially useful since EC2 nodes can&apos;t connect *back* to the master.</desc
   <builders>
     <hudson.tasks.Shell>
       <command>#!/usr/bin/env bash
+set -x
+
 rsync -v -e &quot;ssh -o StrictHostKeyChecking=no -i $JENKINS_HOME/.ssh-ec2/id_rsa -i $JENKINS_HOME/.ssh/id_rsa&quot; ~/jobs/$PARENT_JOB/builds/$PARENT_NUMBER/archive/test.tar.gz ~/jobs/$PARENT_JOB/builds/$PARENT_NUMBER/archive/build_output.tar.gz jenkins@$TEST_HOST:$WORKING_DIR</command>
     </hudson.tasks.Shell>
   </builders>
