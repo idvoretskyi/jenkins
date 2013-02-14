@@ -23,7 +23,7 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>EMAIL</name>
-          <description></description>
+          <description>Notify this email if the build breaks. If empty, notify the committer of the latest commit in $BRANCH</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
@@ -276,7 +276,7 @@ PARENT_NUMBER=$BUILD_NUMBER</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
           <projects>test-cleanup</projects>
-          <condition>UNSTABLE_OR_BETTER</condition>
+          <condition>UNSTABLE_OR_WORSE</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
         <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
@@ -300,12 +300,12 @@ SUBJECT=Failed tests</properties>
   </publishers>
   <buildWrappers>
     <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.11">
-      <timeoutMinutes>3</timeoutMinutes>
+      <timeoutMinutes>240</timeoutMinutes>
       <failBuild>false</failBuild>
       <writingDescription>false</writingDescription>
-      <timeoutPercentage>200</timeoutPercentage>
-      <timeoutType>elastic</timeoutType>
-      <timeoutMinutesElasticDefault>120</timeoutMinutesElasticDefault>
+      <timeoutPercentage>0</timeoutPercentage>
+      <timeoutType>absolute</timeoutType>
+      <timeoutMinutesElasticDefault>3</timeoutMinutesElasticDefault>
     </hudson.plugins.build__timeout.BuildTimeoutWrapper>
     <com.michelin.cio.hudson.plugins.copytoslave.CopyToSlaveBuildWrapper plugin="copy-to-slave@1.4">
       <includes>test_output.html.template,test_results.html.template</includes>

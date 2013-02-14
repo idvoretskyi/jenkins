@@ -84,12 +84,14 @@ elif [ &quot;$EMAIL&quot; != &quot;&quot; ]; then
   email=&quot;$EMAIL&quot;
   info=
 else
-  email=`git log -1 --format=&apos;format:%cn &lt;%ce&gt;&apos; &quot;$GIT_COMMIT&quot;`
+  email=&apos;atnnn@rethinkdb.com&apos;
+  TODO_email=&quot;To: `git log -1 --format=&apos;format:%cn &lt;%ce&gt;&apos; &quot;$GIT_COMMIT&quot;`&quot;
+  # TODO: only allow @rethinkdb.com emails
   info=&quot; for `git log -1 --format=&apos;format:%h %s&apos; &quot;$GIT_COMMIT&quot;`&quot;
 fi
 
-mail -s &quot;$SUBJECT$info&quot; -r buildbot@rethinkdb.com atnnn@rethinkdb.com &lt;&lt;EOF
-To: $email
+mail -s &quot;$SUBJECT$info&quot; -r buildbot@rethinkdb.com &quot;$email&quot; &lt;&lt;EOF
+$TODO_email
 Test results: http://dr-doom:8888/job/$PARENT_JOB/$PARENT_NUMBER/Test_Results/
 EOF</command>
     </hudson.tasks.Shell>

@@ -55,12 +55,12 @@ VER=&quot;`scripts/gen-version.sh`&quot;
 mv build/packaging/osx/rethinkdb.dmg rethinkdb-&quot;$VER&quot;.dmg
 
 # Create zip of build results and files needed for test
-tar czf build_output.tar.gz build/release/rethinkdb build/release/web build/drivers drivers</command>
+# tar czf build_output.tar.gz build/release/rethinkdb build/release/ build/drivers drivers</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>build_output.tar.gz, *.dmg</artifacts>
+      <artifacts>*.dmg</artifacts>
       <latestOnly>false</latestOnly>
     </hudson.tasks.ArtifactArchiver>
   </publishers>

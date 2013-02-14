@@ -149,7 +149,7 @@ def main():
   runner_id = os.environ[&quot;BUILD_NUMBER&quot;]
   executor_id = int(os.environ[&quot;EXECUTOR_NUMBER&quot;])
   node_name = os.environ[&quot;NODE_NAME&quot;]
-  port_offset = 1060 + executor_id * 100
+  port_offset = 1200 + executor_id * 1
   os.putenv(&quot;HOST&quot;, &quot;localhost&quot;)
   os.putenv(&quot;RETHINKDB_PORT_OFFSET&quot;, str(port_offset))
   os.putenv(&quot;PORT&quot;, str(port_offset + 28015))
@@ -214,7 +214,7 @@ exit $?</command>
   <publishers/>
   <buildWrappers>
     <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.11">
-      <timeoutMinutes>10</timeoutMinutes>
+      <timeoutMinutes>30</timeoutMinutes>
       <failBuild>false</failBuild>
       <writingDescription>false</writingDescription>
       <timeoutPercentage>0</timeoutPercentage>

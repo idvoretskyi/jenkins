@@ -28,3 +28,4 @@ jobs/*/scm-polling.log
 .subversion/
 Fingerprint cleanup.log
 config-history/
+Connection Activity monitoring to slaves.log
