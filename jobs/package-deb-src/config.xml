@@ -21,7 +21,12 @@ Nodes with the launchpad label need the &apos;RethinkDB Packaging&apos; GPG keys
         <hudson.model.StringParameterDefinition>
           <name>UBUNTU_RELEASES_PORTABLE</name>
           <description></description>
-          <defaultValue>lucid maverick natty</defaultValue>
+          <defaultValue>lucid natty</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>PACKAGE_BUILD_NUMBER</name>
+          <description>The fourth number in the version, after the dash.</description>
+          <defaultValue>0</defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -42,17 +47,26 @@ rm *.dsc *.changes *.build *.tar.gz || true
 
 cd rethinkdb
 
-git checkout --detach
-git fetch origin &quot;$GIT_REF&quot;
-git checkout -B &quot;$GIT_REF&quot; FETCH_HEAD
+echo PBN: $PACKAGE_BUILD_NUMBER
+UBUNTU_RELEASE=precise ./scripts/gen-trailer.sh
 
+rm -rf build || true
+
+git checkout --detach
+git fetch origin --tags &quot;$GIT_REF&quot;
+git checkout -f FETCH_HEAD
+
+./configure --fetch all
+make support
 for ubrelease in $UBUNTU_RELEASES_REGULAR ; do
     make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src
 done
 
 for ubrelease in $UBUNTU_RELEASES_PORTABLE; do
-    make BUILD_PORTABLE=1 UBUNTU_RELEASE=$ubrelease build-deb-src
-done</command>
+    make BUILD_PORTABLE=1 STATIC_V8=1 UBUNTU_RELEASE=$ubrelease build-deb-src
+done
+
+mv build/packages/*.* .. || true</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

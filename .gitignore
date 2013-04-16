@@ -29,3 +29,4 @@ jobs/*/scm-polling.log
 Fingerprint cleanup.log
 config-history/
 Connection Activity monitoring to slaves.log
+monitoring/

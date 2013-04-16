@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Make a source distribution tgz</description>
   <logRotator>
     <daysToKeep>180</daysToKeep>
     <numToKeep>-1</numToKeep>
@@ -21,7 +21,7 @@
     </hudson.model.ParametersDefinitionProperty>
   </properties>
   <scm class="hudson.scm.NullSCM"/>
-  <assignedNode>osx_build</assignedNode>
+  <assignedNode>build</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -30,38 +30,22 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>test &quot;`sw_vers -productVersion`&quot; == 10.7.5  || (
-  echo OS X builds need to be built on OS X 10.7.5
-  false
-)
+      <command>test -d .git || ( git init &amp;&amp; git remote add origin https://github.com/rethinkdb/rethinkdb.git )
 
-# This shouldn&apos;t really be here, but it works
-PATH=/usr/local/git/bin:/usr/local/share/npm/bin:/usr/local/bin:$PATH
-
-test -d .git || ( git init &amp;&amp; git remote add origin https://github.com/rethinkdb/rethinkdb.git )
-
-git fetch origin --tags $GIT_REF
+git fetch -t origin $GIT_REF
 git checkout -f FETCH_HEAD
+git clean -fxd
 
-# Clean any artifacts from previous builds
-rm -f build_output.tar.gz || true
-rm *.dmg || true
-cd src; make clean; cd -
-rm -rf build || true
-./configure --static all --allow-fetch
-make build-osx BUILD_PORTABLE=1
+./configure --fetch all
+make support
+make dist VERBOSE=1
 
-# rename the dmg
-VER=&quot;`scripts/gen-version.sh`&quot;
-mv build/packages/osx/rethinkdb.dmg rethinkdb-&quot;$VER&quot;.dmg
-
-# Create zip of build results and files needed for test
-# tar czf build_output.tar.gz build/release/rethinkdb build/release/ build/drivers drivers</command>
+mv build/packages/*.tgz .</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>*.dmg</artifacts>
+      <artifacts>*.tgz</artifacts>
       <latestOnly>false</latestOnly>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
