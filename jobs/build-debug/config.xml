@@ -132,34 +132,6 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi</command>
     </hudson.tasks.Shell>
-    <hudson.plugins.parameterizedtrigger.TriggerBuilder plugin="parameterized-trigger@2.16">
-      <configs>
-        <hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
-          <configs>
-            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-              <properties>PARENT_JOB=$JOB_NAME
-PARENT_NUMBER=$BUILD_NUMBER</properties>
-            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-          </configs>
-          <configFactories>
-            <hudson.plugins.parameterizedtrigger.FileBuildParameterFactory>
-              <filePattern>full_test_params/test_*.param</filePattern>
-            </hudson.plugins.parameterizedtrigger.FileBuildParameterFactory>
-          </configFactories>
-          <projects>test-runner</projects>
-          <condition>ALWAYS</condition>
-          <triggerWithNoParameters>false</triggerWithNoParameters>
-          <block>
-            <unstableThreshold>
-              <name>UNSTABLE</name>
-              <ordinal>1</ordinal>
-              <color>YELLOW</color>
-            </unstableThreshold>
-          </block>
-          <buildAllNodesWithLabel>false</buildAllNodesWithLabel>
-        </hudson.plugins.parameterizedtrigger.BlockableBuildTriggerConfig>
-      </configs>
-    </hudson.plugins.parameterizedtrigger.TriggerBuilder>
     <hudson.tasks.Shell>
       <command>#!/usr/bin/env bash
 rsync -r --exclude &quot;core&quot; dr-doom.local:~/jobs/$JOB_NAME/builds/$BUILD_NUMBER/test_data ./
@@ -268,17 +240,6 @@ if __name__ == &quot;__main__&quot;:
     </htmlpublisher.HtmlPublisher>
     <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.16">
       <configs>
-        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-          <configs>
-            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-              <properties>PARENT_JOB=$JOB_NAME
-PARENT_NUMBER=$BUILD_NUMBER</properties>
-            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-          </configs>
-          <projects>test-cleanup</projects>
-          <condition>UNSTABLE_OR_WORSE</condition>
-          <triggerWithNoParameters>false</triggerWithNoParameters>
-        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
         <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
           <configs>
             <hudson.plugins.git.GitRevisionBuildParameters plugin="git@1.1.26">

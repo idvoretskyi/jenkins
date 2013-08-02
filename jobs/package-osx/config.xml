@@ -44,11 +44,9 @@ git fetch origin --tags $GIT_REF
 git checkout -f FETCH_HEAD
 
 # Clean any artifacts from previous builds
-rm -f build_output.tar.gz || true
-rm *.dmg || true
-cd src; make clean; cd -
-rm -rf build || true
-./configure --static all --allow-fetch
+git clean -fxd
+
+./configure --static all --fetch v8 --fetch protobuf --fetch protoc
 make build-osx BUILD_PORTABLE=1
 
 # rename the dmg

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Sync dr-doom:/srv/rethinkdb-donwload/mirror with download.rethinkdb.com&#xd;
+&#xd;
+Or just a subdirectory</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>SUBDIRECTORY</name>
+          <description>Leave empty for all
+
+Current subdirectories:
+
+centos
+dist
+mirror
+osx</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>dr-doom</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>REMOTE=72.14.189.19
+SRC=/srv/rethinkdb-download-mirror/$SUBDIRECTORY
+DEST=$REMOTE:/srv/www/download.rethinkdb.com/public_html/$SUBDIRECTORY
+
+ssh teapot@localhost -t &quot;rsync -Przvh --delete -e &apos;ssh -p 440&apos; $SRC/ $DEST&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

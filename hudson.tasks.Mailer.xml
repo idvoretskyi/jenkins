@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson.tasks.Mailer_-DescriptorImpl>
   <helpRedirect/>
-  <hudsonUrl>http://dr-doom:8888/</hudsonUrl>
+  <hudsonUrl>http://jenkins.dev.rethinkdb.com/</hudsonUrl>
   <smtpAuthUsername>buildbot@rethinkdb.com</smtpAuthUsername>
   <smtpAuthPassword>d6lMvJTWIPk2f5XD3/I8McnnpK59L1SwFYRLAen/Cus=</smtpAuthPassword>
   <adminAddress>buildbot@rethinkdb.com</adminAddress>

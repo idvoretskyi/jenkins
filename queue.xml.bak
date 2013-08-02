@@ -1,2 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<list/>
+<list>
+  <hudson.model.Queue_-WaitingItem>
+    <actions>
+      <hudson.model.CauseAction>
+        <causes>
+          <hudson.triggers.SCMTrigger_-SCMTriggerCause>
+            <pollingLog>Started on Aug 1, 2013 5:13:17 PM
+Workspace is offline.
+Scheduling a new build to get a workspace.
+Done. Took 2 ms
+Changes found
+</pollingLog>
+          </hudson.triggers.SCMTrigger_-SCMTriggerCause>
+        </causes>
+      </hudson.model.CauseAction>
+    </actions>
+    <id>101</id>
+    <task class="hudson.model.FreeStyleProject">test-commits</task>
+    <inQueueSince>1375402397480</inQueueSince>
+    <timestamp>
+      <time>1375402402480</time>
+      <timezone>America/Los_Angeles</timezone>
+    </timestamp>
+  </hudson.model.Queue_-WaitingItem>
+</list>

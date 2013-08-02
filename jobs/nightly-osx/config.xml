@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <com.cloudbees.plugins.flow.BuildFlow plugin="build-flow-plugin@0.7">
   <actions/>
-  <description>Build an osx package every night and upload it to download.rethinkdb.com/osx/nightly/</description>
+  <description>Build on osx every night</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.scm.NullSCM"/>
   <canRoam>true</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers class="vector">
@@ -26,6 +26,6 @@
   <buildWrappers/>
   <icon/>
   <dsl>b = build(&quot;package-osx&quot;, GIT_REF:&quot;next&quot;)
-build(&quot;upload-osx&quot;, BUILD_NUMBER:b.build.number)
+// build(&quot;upload-osx&quot;, BUILD_NUMBER:b.build.number)
 </dsl>
 </com.cloudbees.plugins.flow.BuildFlow>

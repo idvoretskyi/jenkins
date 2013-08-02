@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Mirror rethinkdb/ppa to dr-doom:/srv/rethinkdb-download-mirror/ubuntu&#xd;
+&#xd;
+Trigger an update of download.rethinkdb.com</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>dr-doom</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>HERE=`pwd`
+
+cat &gt; mirror.list &lt;&lt; EOF
+
+set base_path    $HERE
+set mirror_path  /srv/rethinkdb-download-mirror/mirror
+set skel_path    $HERE/skel
+set var_path     $HERE/var
+set cleanscript  $HERE/clean.sh
+set postmirror_script $var_path/postmirror.sh
+set run_postmirror 0
+set nthreads     4
+set _tilde 0
+
+deb-i386  http://ppa.launchpad.net/rethinkdb/ppa/ubuntu precise main
+deb-amd64 http://ppa.launchpad.net/rethinkdb/ppa/ubuntu precise main
+deb-src   http://ppa.launchpad.net/rethinkdb/ppa/ubuntu precise main
+
+deb-i386  http://ppa.launchpad.net/rethinkdb/ppa/ubuntu lucid main
+deb-amd64 http://ppa.launchpad.net/rethinkdb/ppa/ubuntu lucid main
+deb-src   http://ppa.launchpad.net/rethinkdb/ppa/ubuntu lucid main
+
+deb-i386  http://ppa.launchpad.net/rethinkdb/ppa/ubuntu quantal main
+deb-amd64 http://ppa.launchpad.net/rethinkdb/ppa/ubuntu quantal main
+deb-src   http://ppa.launchpad.net/rethinkdb/ppa/ubuntu quantal main
+
+deb-i386  http://ppa.launchpad.net/rethinkdb/ppa/ubuntu raring main
+deb-amd64 http://ppa.launchpad.net/rethinkdb/ppa/ubuntu raring main
+deb-src   http://ppa.launchpad.net/rethinkdb/ppa/ubuntu raring main
+
+EOF
+
+apt-mirror mirror.list</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.16">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>SUBDIRECTORY=mirror</properties>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>release-downloads</projects>
+          <condition>SUCCESS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.BuildTrigger>
+  </publishers>
+  <buildWrappers/>
+</project>

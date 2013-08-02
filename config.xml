@@ -98,8 +98,10 @@
       <numExecutors>2</numExecutors>
       <mode>EXCLUSIVE</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
-      <launcher class="hudson.slaves.CommandLauncher">
-        <agentCommand></agentCommand>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.21">
+        <host>deadshot</host>
+        <port>22</port>
+        <password>Zm7PYIo0nRatb/4NyKpzjQ==</password>
       </launcher>
       <label>build ubuntu11.10 test</label>
       <nodeProperties>
@@ -2291,6 +2293,18 @@
       <sshPort>22</sshPort>
     </hudson.plugins.ec2.EC2Slave>
     <hudson.plugins.ec2.EC2Slave plugin="ec2@1.17">
+      <temporaryOfflineCause class="hudson.slaves.OfflineCause$SimpleOfflineCause">
+        <description>
+          <holder>
+            <owner>hudson.slaves.Messages</owner>
+          </holder>
+          <key>SlaveComputer.DisconnectedBy</key>
+          <args>
+            <string>anonymous</string>
+            <string></string>
+          </args>
+        </description>
+      </temporaryOfflineCause>
       <name>i-059c615d</name>
       <description>ubuntu 11.10 test 64bit</description>
       <remoteFS>/var/jenkins</remoteFS>
@@ -4470,7 +4484,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames class="tree-set">
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>test-next</string>
+        <string>test-commits</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -4559,6 +4573,8 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames class="tree-set">
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+        <string>mirror-launchpad</string>
+        <string>release-downloads</string>
         <string>release-drivers</string>
         <string>release-launchpad</string>
         <string>release-osx</string>

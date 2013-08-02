@@ -37,6 +37,9 @@ git checkout -f FETCH_HEAD
 git clean -fxd
 
 ./configure --fetch all
+make support/usr/bin/coffee VERBOSE=1
+coffee --version || :
+./support/usr/bin/coffee --version || :
 make support
 make dist VERBOSE=1
 
