@@ -57,7 +57,7 @@ git fetch origin --tags &quot;$GIT_REF&quot;
 git checkout -f FETCH_HEAD
 
 ./configure --fetch all
-make support VERBOSE=1
+make support VERBOSE=1 -j8
 for ubrelease in $UBUNTU_RELEASES_REGULAR ; do
     make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src VERBOSE=1
 done

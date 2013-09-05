@@ -20,6 +20,11 @@ mirror
 osx</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.BooleanParameterDefinition>
+          <name>DRY_RUN</name>
+          <description>Just pretend, do not upload</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -37,7 +42,13 @@ osx</description>
 SRC=/srv/rethinkdb-download-mirror/$SUBDIRECTORY
 DEST=$REMOTE:/srv/www/download.rethinkdb.com/public_html/$SUBDIRECTORY
 
-ssh teapot@localhost -t &quot;rsync -Przvh --delete -e &apos;ssh -p 440&apos; $SRC/ $DEST&quot;</command>
+OPTS=
+
+if $DRY_RUN; then
+  OPTS=&quot;$OPTS --dry-run&quot;
+fi
+
+ssh teapot@localhost -t &quot;rsync $OPTS -Przvh --delete -e &apos;ssh -p 440&apos; $SRC/ $DEST&quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
