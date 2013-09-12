@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<hudson.plugins.git.GitSCM_-DescriptorImpl plugin="git@1.1.26">
-  <helpRedirect/>
-  <generation>187</generation>
+<hudson.plugins.git.GitSCM_-DescriptorImpl plugin="git@1.4.0">
+  <generation>188</generation>
   <globalConfigName>buildbot</globalConfigName>
   <globalConfigEmail>buildbot@rethinkdb.com</globalConfigEmail>
   <createAccountBasedOnEmail>false</createAccountBasedOnEmail>

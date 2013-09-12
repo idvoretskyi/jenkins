@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<hudson.tasks.Mailer_-DescriptorImpl>
-  <helpRedirect/>
+<hudson.tasks.Mailer_-DescriptorImpl plugin="mailer@1.5">
   <hudsonUrl>http://jenkins.dev.rethinkdb.com/</hudsonUrl>
   <smtpAuthUsername>buildbot@rethinkdb.com</smtpAuthUsername>
-  <smtpAuthPassword>d6lMvJTWIPk2f5XD3/I8McnnpK59L1SwFYRLAen/Cus=</smtpAuthPassword>
+  <smtpAuthPassword>fELFDyXE8XPROPTxAXjy87/Z+naZ0XGlyouD3gTmnuo=</smtpAuthPassword>
   <adminAddress>buildbot@rethinkdb.com</adminAddress>
   <smtpHost>smtp.gmail.com</smtpHost>
   <useSsl>false</useSsl>

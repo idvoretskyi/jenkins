@@ -2,7 +2,7 @@
 <project>
   <actions/>
   <description></description>
-  <logRotator>
+  <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>180</daysToKeep>
     <numToKeep>-1</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
@@ -26,7 +26,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector"/>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
@@ -46,7 +46,7 @@ git checkout -f FETCH_HEAD
 # Clean any artifacts from previous builds
 git clean -fxd
 
-./configure --static all --fetch v8 --fetch protobuf --fetch protoc
+./configure --static all --fetch v8 --fetch protobuf --fetch protoc --fetch npm
 make build-osx BUILD_PORTABLE=1
 
 # rename the dmg
@@ -61,6 +61,7 @@ mv build/packages/osx/rethinkdb.dmg rethinkdb-&quot;$VER&quot;.dmg
     <hudson.tasks.ArtifactArchiver>
       <artifacts>*.dmg</artifacts>
       <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>

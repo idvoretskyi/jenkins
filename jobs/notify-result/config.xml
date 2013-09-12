@@ -8,73 +8,39 @@
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
           <name>PARENT_JOB</name>
-          <description></description>
+          <description>Name of the parent job</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PARENT_NUMBER</name>
-          <description></description>
+          <description>Id of the parent job</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>EMAIL</name>
-          <description></description>
+          <description>Destination address. If empty, use info from git commit.</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>SUBJECT</name>
-          <description></description>
+          <description>Email subject</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>REPORT_NAME</name>
+          <description>Name of the report to link to</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@1.1.26">
-    <configVersion>2</configVersion>
-    <userRemoteConfigs>
-      <hudson.plugins.git.UserRemoteConfig>
-        <name></name>
-        <refspec></refspec>
-        <url>https://github.com/rethinkdb/rethinkdb.git</url>
-      </hudson.plugins.git.UserRemoteConfig>
-    </userRemoteConfigs>
-    <branches>
-      <hudson.plugins.git.BranchSpec>
-        <name>**</name>
-      </hudson.plugins.git.BranchSpec>
-    </branches>
-    <disableSubmodules>false</disableSubmodules>
-    <recursiveSubmodules>false</recursiveSubmodules>
-    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-    <authorOrCommitter>false</authorOrCommitter>
-    <clean>false</clean>
-    <wipeOutWorkspace>false</wipeOutWorkspace>
-    <pruneBranches>false</pruneBranches>
-    <remotePoll>false</remotePoll>
-    <ignoreNotifyCommit>false</ignoreNotifyCommit>
-    <useShallowClone>false</useShallowClone>
-    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
-    <gitTool>Default</gitTool>
-    <browser class="hudson.plugins.git.browser.GithubWeb">
-      <url>https://github.com/rethinkdb/rethinkdb/</url>
-    </browser>
-    <submoduleCfg class="list"/>
-    <relativeTargetDir></relativeTargetDir>
-    <reference></reference>
-    <excludedRegions></excludedRegions>
-    <excludedUsers></excludedUsers>
-    <gitConfigName></gitConfigName>
-    <gitConfigEmail></gitConfigEmail>
-    <skipTag>false</skipTag>
-    <includedRegions></includedRegions>
-    <scmName></scmName>
-  </scm>
+  <scm class="hudson.scm.NullSCM"/>
   <assignedNode>sendmail</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector"/>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
@@ -83,16 +49,20 @@
 elif [ &quot;$EMAIL&quot; != &quot;&quot; ]; then
   email=&quot;$EMAIL&quot;
   info=
-else
+elif [ &quot;$GIT_COMMIT&quot; != &quot;&quot; ]; then
+  git fetch # from https://github.com/rethinkdb/rethinkdb.git
   email=&apos;atnnn@rethinkdb.com&apos;
   TODO_email=&quot;To: `git log -1 --format=&apos;format:%cn &lt;%ce&gt;&apos; &quot;$GIT_COMMIT&quot;`&quot;
   # TODO: only allow @rethinkdb.com emails
   info=&quot; for `git log -1 --format=&apos;format:%h %s&apos; &quot;$GIT_COMMIT&quot;`&quot;
+else
+  exit 1
 fi
 
 mail -s &quot;$SUBJECT$info&quot; -r buildbot@rethinkdb.com &quot;$email&quot; &lt;&lt;EOF
 $TODO_email
-Test results: http://dr-doom:8888/job/$PARENT_JOB/$PARENT_NUMBER/Test_Results/
+Build Log: http://dr-doom:8888/job/$PARENT_JOB/$PARENT_NUMBER/console
+Report: http://dr-doom:8888/job/$PARENT_JOB/$PARENT_NUMBER/$REPORT_NAME/
 EOF</command>
     </hudson.tasks.Shell>
   </builders>
