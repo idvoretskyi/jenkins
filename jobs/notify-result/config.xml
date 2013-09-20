@@ -51,18 +51,18 @@ elif [ &quot;$EMAIL&quot; != &quot;&quot; ]; then
   info=
 elif [ &quot;$GIT_COMMIT&quot; != &quot;&quot; ]; then
   git fetch # from https://github.com/rethinkdb/rethinkdb.git
-  email=&apos;atnnn@rethinkdb.com&apos;
-  TODO_email=&quot;To: `git log -1 --format=&apos;format:%cn &lt;%ce&gt;&apos; &quot;$GIT_COMMIT&quot;`&quot;
-  # TODO: only allow @rethinkdb.com emails
+  email=&quot;`git log -1 --format=&apos;format:%cn &lt;%ce&gt;&apos; &quot;$GIT_COMMIT&quot;`&quot;
+  if ! echo &quot;$email&quot; | egrep -q &quot;@rethinkdb\.com&gt;&quot;; then
+    email=&quot;devops@rethinkdb.com&quot;
+  fi
   info=&quot; for `git log -1 --format=&apos;format:%h %s&apos; &quot;$GIT_COMMIT&quot;`&quot;
 else
   exit 1
 fi
 
 mail -s &quot;$SUBJECT$info&quot; -r buildbot@rethinkdb.com &quot;$email&quot; &lt;&lt;EOF
-$TODO_email
-Build Log: http://dr-doom:8888/job/$PARENT_JOB/$PARENT_NUMBER/console
-Report: http://dr-doom:8888/job/$PARENT_JOB/$PARENT_NUMBER/$REPORT_NAME/
+Build Log: http://jenkins.dev.rethinkdb.com/job/$PARENT_JOB/$PARENT_NUMBER/console
+Report: http://jenkins.dev.rethinkdb.com/job/$PARENT_JOB/$PARENT_NUMBER/$REPORT_NAME/
 EOF</command>
     </hudson.tasks.Shell>
   </builders>

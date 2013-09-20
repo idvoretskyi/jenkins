@@ -61,7 +61,7 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
     <hudson.triggers.SCMTrigger>
-      <spec>*/2 * * * *</spec>
+      <spec>H/2 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
     </hudson.triggers.SCMTrigger>
   </triggers>
@@ -74,15 +74,9 @@ if &quot;$CLEAN_BUILD&quot;; then
   git clean -fxd
 fi
 
-( cd src &amp;&amp;
-  ../scripts/check-style.sh &gt; ../style-report.txt 2&gt;&amp;1
-) &amp;
-
 ./configure
 
-make test -j 8 DEBUG=1 RUN_TEST_ARGS=&apos;-d /dev/shm -j 8 -o test_results -t 10m -c&apos;
-
-wait</command>
+make test -j 8 DEBUG=1 RUN_TEST_ARGS=&apos;-d /dev/shm -j 8 -o test_results -t 10m -c -F &quot;flaky&quot;&apos;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
@@ -92,13 +86,6 @@ wait</command>
           <reportName>Test results</reportName>
           <reportDir>test_results</reportDir>
           <reportFiles>test_results.html</reportFiles>
-          <keepAll>true</keepAll>
-          <wrapperName>htmlpublisher-wrapper.html</wrapperName>
-        </htmlpublisher.HtmlPublisherTarget>
-        <htmlpublisher.HtmlPublisherTarget>
-          <reportName>Style check</reportName>
-          <reportDir></reportDir>
-          <reportFiles>style-report.txt</reportFiles>
           <keepAll>true</keepAll>
           <wrapperName>htmlpublisher-wrapper.html</wrapperName>
         </htmlpublisher.HtmlPublisherTarget>
@@ -133,7 +120,7 @@ GIT_COMMIT=$GIT_COMMIT</properties>
       <timeoutMinutesElasticDefault>3</timeoutMinutesElasticDefault>
     </hudson.plugins.build__timeout.BuildTimeoutWrapper>
     <org.jenkinsci.plugins.buildnamesetter.BuildNameSetter plugin="build-name-setter@1.3">
-      <template>${BUILD_NUMBER}-${GIT_BRANCH}</template>
+      <template>${BUILD_NUMBER} ${GIT_BRANCH}</template>
     </org.jenkinsci.plugins.buildnamesetter.BuildNameSetter>
   </buildWrappers>
 </project>
