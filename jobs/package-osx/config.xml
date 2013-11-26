@@ -46,8 +46,8 @@ git checkout -f FETCH_HEAD
 # Clean any artifacts from previous builds
 git clean -fxd
 
-./configure --static all --fetch v8 --fetch protobuf --fetch protoc --fetch npm
-make build-osx BUILD_PORTABLE=1
+./configure --static all --dynamic termcap termcap=-lncurses --fetch v8 --fetch protobuf --fetch protoc --fetch npm
+make build-osx BUILD_PORTABLE=1 ALLOW_WARNINGS=1
 
 # rename the dmg
 VER=&quot;`scripts/gen-version.sh`&quot;

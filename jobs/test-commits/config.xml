@@ -56,7 +56,7 @@
   </scm>
   <assignedNode>test</assignedNode>
   <canRoam>false</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
@@ -76,7 +76,7 @@ fi
 
 ./configure
 
-make test -j 8 DEBUG=1 RUN_TEST_ARGS=&apos;-d /dev/shm -j 8 -o test_results -t 10m -c -F &quot;flaky&quot;&apos;</command>
+make test -j 8 DEBUG=1 RUN_TEST_ARGS=&apos;-j 8 -o test_results -t 10m -c -F &quot;flaky ql-*-polyglot unit-RDBBtree unit-RDBProtocol&quot;&apos; # -d /dev/shm </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

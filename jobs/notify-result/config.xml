@@ -51,8 +51,8 @@ elif [ &quot;$EMAIL&quot; != &quot;&quot; ]; then
   info=
 elif [ &quot;$GIT_COMMIT&quot; != &quot;&quot; ]; then
   git fetch # from https://github.com/rethinkdb/rethinkdb.git
-  email=&quot;`git log -1 --format=&apos;format:%cn &lt;%ce&gt;&apos; &quot;$GIT_COMMIT&quot;`&quot;
-  if ! echo &quot;$email&quot; | egrep -q &quot;@rethinkdb\.com&gt;&quot;; then
+  email=&quot;`git log -1 --format=&apos;format:%ce&apos; &quot;$GIT_COMMIT&quot;`&quot;
+  if ! echo &quot;$email&quot; | egrep -q &quot;@rethinkdb\.com&quot;; then
     email=&quot;devops@rethinkdb.com&quot;
   fi
   info=&quot; for `git log -1 --format=&apos;format:%h %s&apos; &quot;$GIT_COMMIT&quot;`&quot;

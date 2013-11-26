@@ -50,18 +50,6 @@
       <userId>anonymous</userId>
     </slave>
     <slave>
-      <temporaryOfflineCause class="hudson.slaves.OfflineCause$SimpleOfflineCause">
-        <description>
-          <holder>
-            <owner>hudson.slaves.Messages</owner>
-          </holder>
-          <key>SlaveComputer.DisconnectedBy</key>
-          <args>
-            <string>anonymous</string>
-            <string> : benchmarks</string>
-          </args>
-        </description>
-      </temporaryOfflineCause>
       <name>puzzler</name>
       <description></description>
       <remoteFS>/var/jenkins</remoteFS>
@@ -94,7 +82,9 @@
     <slave>
       <temporaryOfflineCause class="hudson.slaves.OfflineCause$SimpleOfflineCause">
         <description>
-          <holder reference="../../../../slave[2]/temporaryOfflineCause/description/holder"/>
+          <holder>
+            <owner>hudson.slaves.Messages</owner>
+          </holder>
           <key>SlaveComputer.DisconnectedBy</key>
           <args>
             <string>anonymous</string>
@@ -134,11 +124,11 @@
     <slave>
       <temporaryOfflineCause class="hudson.slaves.OfflineCause$SimpleOfflineCause">
         <description>
-          <holder reference="../../../../slave[2]/temporaryOfflineCause/description/holder"/>
+          <holder reference="../../../../slave[3]/temporaryOfflineCause/description/holder"/>
           <key>SlaveComputer.DisconnectedBy</key>
           <args>
             <string>anonymous</string>
-            <string> : benchmarks</string>
+            <string> : Benchmarking ~daniel</string>
           </args>
         </description>
       </temporaryOfflineCause>
@@ -213,6 +203,7 @@
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@0.27">
         <host>lex-luthor.local</host>
         <port>22</port>
+        <credentialsId>2bb249e9-b503-4979-badd-05a0bc2748e4</credentialsId>
         <jvmOptions>-Djava.awt.headless=true</jvmOptions>
       </launcher>
       <label></label>
@@ -249,7 +240,7 @@
     <slave>
       <temporaryOfflineCause class="hudson.slaves.OfflineCause$SimpleOfflineCause">
         <description>
-          <holder reference="../../../../slave[2]/temporaryOfflineCause/description/holder"/>
+          <holder reference="../../../../slave[3]/temporaryOfflineCause/description/holder"/>
           <key>SlaveComputer.DisconnectedBy</key>
           <args>
             <string>anonymous</string>

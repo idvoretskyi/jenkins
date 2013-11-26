@@ -16,7 +16,7 @@ Nodes with the launchpad label need the &apos;RethinkDB Packaging&apos; GPG keys
         <hudson.model.StringParameterDefinition>
           <name>UBUNTU_RELEASES_REGULAR</name>
           <description></description>
-          <defaultValue>precise quantal raring</defaultValue>
+          <defaultValue>precise quantal raring saucy</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>UBUNTU_RELEASES_PORTABLE</name>
@@ -37,7 +37,7 @@ Nodes with the launchpad label need the &apos;RethinkDB Packaging&apos; GPG keys
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector"/>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
@@ -49,21 +49,22 @@ cd rethinkdb
 
 git clean -fxd
 
-echo PACKAGE_BUILD_NUMBER: $PACKAGE_BUILD_NUMBER
-UBUNTU_RELEASE=precise ./scripts/gen-trailer.sh
 
 git checkout --detach
 git fetch origin --tags &quot;$GIT_REF&quot;
 git checkout -f FETCH_HEAD
 
+echo PACKAGE_BUILD_NUMBER: $PACKAGE_BUILD_NUMBER
+UBUNTU_RELEASE=precise ./scripts/gen-trailer.sh || :
+
 ./configure --fetch all
 make support VERBOSE=1 -j8
 for ubrelease in $UBUNTU_RELEASES_REGULAR ; do
-    make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src VERBOSE=1
+    make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src VERBOSE=1 PACKAGE_BUILD_NUMBER=$PACKAGE_BUILD_NUMBER
 done
 
 for ubrelease in $UBUNTU_RELEASES_PORTABLE; do
-    make BUILD_PORTABLE=1 STATIC_V8=1 UBUNTU_RELEASE=$ubrelease build-deb-src VERBOSE=1
+    make BUILD_PORTABLE=1 STATIC_V8=1 UBUNTU_RELEASE=$ubrelease build-deb-src VERBOSE=1 PACKAGE_BUILD_NUMBER=$PACKAGE_BUILD_NUMBER
 done
 
 mv build/packages/*.* .. || true</command>
@@ -73,6 +74,7 @@ mv build/packages/*.* .. || true</command>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>*.dsc, *.changes, *.build, *.tar.gz</artifacts>
       <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>
