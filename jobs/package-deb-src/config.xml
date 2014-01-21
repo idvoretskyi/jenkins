@@ -59,6 +59,8 @@ UBUNTU_RELEASE=precise ./scripts/gen-trailer.sh || :
 
 ./configure --fetch all
 make support VERBOSE=1 -j8
+rm -rf support/build
+
 for ubrelease in $UBUNTU_RELEASES_REGULAR ; do
     make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src VERBOSE=1 PACKAGE_BUILD_NUMBER=$PACKAGE_BUILD_NUMBER
 done

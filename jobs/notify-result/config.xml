@@ -31,6 +31,11 @@
           <description>Name of the report to link to</description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>DISABLE_NOTIFICATION</name>
+          <description></description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>
@@ -44,7 +49,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>if [ &quot;$EMAIL&quot; = &quot;disable&quot; ]; then
+      <command>if $DISABLE_NOTIFICATION; then
+  echo Aborting. Disabled.
+  exit
+fi
+
+if [ &quot;$EMAIL&quot; = &quot;disable&quot; ]; then
   exit 0
 elif [ &quot;$EMAIL&quot; != &quot;&quot; ]; then
   email=&quot;$EMAIL&quot;

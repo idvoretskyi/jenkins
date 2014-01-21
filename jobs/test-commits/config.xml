@@ -9,7 +9,7 @@
         <hudson.model.BooleanParameterDefinition>
           <name>CLEAN_BUILD</name>
           <description>Run `git clean -fxd` before building.</description>
-          <defaultValue>true</defaultValue>
+          <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -56,7 +56,7 @@
   </scm>
   <assignedNode>test</assignedNode>
   <canRoam>false</canRoam>
-  <disabled>true</disabled>
+  <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
@@ -73,6 +73,8 @@
 if &quot;$CLEAN_BUILD&quot;; then
   git clean -fxd
 fi
+
+npm set registry http://registry.npmjs.eu
 
 ./configure
 
@@ -100,7 +102,8 @@ make test -j 8 DEBUG=1 RUN_TEST_ARGS=&apos;-j 8 -o test_results -t 10m -c -F &qu
 PARENT_NUMBER=$BUILD_NUMBER
 SUBJECT=Tests failed
 REPORT_NAME=Test_results
-GIT_COMMIT=$GIT_COMMIT</properties>
+GIT_COMMIT=$GIT_COMMIT
+DISABLE_NOTIFICATION=true</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
           <projects>notify-result</projects>

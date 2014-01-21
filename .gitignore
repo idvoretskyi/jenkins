@@ -30,3 +30,10 @@ Fingerprint cleanup.log
 config-history/
 Connection Activity monitoring to slaves.log
 monitoring/
+.jenkins
+.node-gyp/
+Out of order build detection.log
+secrets/
+users/
+credentials.xml
+jenkins.security.RekeySecretAdminMonitor/
