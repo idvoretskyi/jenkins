@@ -72,6 +72,8 @@
 
 if &quot;$CLEAN_BUILD&quot;; then
   git clean -fxd
+else
+  make -C test/rql_test/ clean
 fi
 
 npm set registry http://registry.npmjs.eu

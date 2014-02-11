@@ -238,16 +238,6 @@
       <userId>anonymous</userId>
     </slave>
     <slave>
-      <temporaryOfflineCause class="hudson.slaves.OfflineCause$SimpleOfflineCause">
-        <description>
-          <holder reference="../../../../slave[3]/temporaryOfflineCause/description/holder"/>
-          <key>SlaveComputer.DisconnectedBy</key>
-          <args>
-            <string>anonymous</string>
-            <string> : benchmarks</string>
-          </args>
-        </description>
-      </temporaryOfflineCause>
       <name>riddler</name>
       <description></description>
       <remoteFS>/var/jenkins</remoteFS>

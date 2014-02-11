@@ -16,7 +16,7 @@ Nodes with the launchpad label need the &apos;RethinkDB Packaging&apos; GPG keys
         <hudson.model.StringParameterDefinition>
           <name>UBUNTU_RELEASES_REGULAR</name>
           <description></description>
-          <defaultValue>precise quantal raring saucy</defaultValue>
+          <defaultValue>precise quantal saucy</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>UBUNTU_RELEASES_PORTABLE</name>
@@ -58,8 +58,7 @@ echo PACKAGE_BUILD_NUMBER: $PACKAGE_BUILD_NUMBER
 UBUNTU_RELEASE=precise ./scripts/gen-trailer.sh || :
 
 ./configure --fetch all
-make support VERBOSE=1 -j8
-rm -rf support/build
+make fetch VERBOSE=1 -j1
 
 for ubrelease in $UBUNTU_RELEASES_REGULAR ; do
     make UBUNTU_RELEASE=&quot;$ubrelease&quot; build-deb-src VERBOSE=1 PACKAGE_BUILD_NUMBER=$PACKAGE_BUILD_NUMBER
