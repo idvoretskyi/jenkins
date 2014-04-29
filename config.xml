@@ -306,10 +306,8 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>nightly-dist</string>
         <string>nightly-launchpad</string>
         <string>nightly-osx</string>
-        <string>nightly-tests</string>
         <string>PerformanceRegression</string>
       </jobNames>
       <jobFilters/>
@@ -358,9 +356,6 @@
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
         <string>mirror-launchpad</string>
         <string>release-downloads</string>
-        <string>release-drivers</string>
-        <string>release-launchpad</string>
-        <string>release-osx</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -405,25 +400,15 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../../slaves/slave/nodeProperties/hudson.slaves.EnvironmentVariablesNodeProperty/envVars/tree-map/default/comparator"/>
-        <string>build-debug</string>
         <string>build-matrix</string>
-        <string>delme</string>
-        <string>fetch-archive</string>
         <string>mirror-launchpad</string>
-        <string>nightly-dist</string>
         <string>nightly-launchpad</string>
         <string>nightly-osx</string>
-        <string>nightly-tests</string>
         <string>notify-result</string>
         <string>package-deb-src</string>
         <string>package-dist</string>
         <string>package-osx</string>
-        <string>package-rpm</string>
         <string>release-downloads</string>
-        <string>release-drivers</string>
-        <string>release-launchpad</string>
-        <string>release-osx</string>
-        <string>spawn-build-debug</string>
         <string>test-commits</string>
         <string>upload-launchpad</string>
       </jobNames>
