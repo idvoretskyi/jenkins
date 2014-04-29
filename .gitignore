@@ -37,3 +37,6 @@ secrets/
 users/
 credentials.xml
 jenkins.security.RekeySecretAdminMonitor/
+.npmrc
+tmp/
+.fontconfig/

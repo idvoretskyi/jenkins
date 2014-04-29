@@ -1,2 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<list/>
+<list>
+  <hudson.model.Queue_-BuildableItem>
+    <actions>
+      <hudson.model.CauseAction>
+        <causes>
+          <hudson.triggers.TimerTrigger_-TimerTriggerCause/>
+          <hudson.triggers.TimerTrigger_-TimerTriggerCause/>
+          <hudson.triggers.TimerTrigger_-TimerTriggerCause/>
+          <hudson.triggers.TimerTrigger_-TimerTriggerCause/>
+          <hudson.triggers.TimerTrigger_-TimerTriggerCause/>
+        </causes>
+      </hudson.model.CauseAction>
+    </actions>
+    <id>4877</id>
+    <task class="hudson.model.FreeStyleProject">PerformanceRegression</task>
+    <inQueueSince>1397898013971</inQueueSince>
+    <buildableStartMilliseconds>1397898014072</buildableStartMilliseconds>
+    <isPending>false</isPending>
+  </hudson.model.Queue_-BuildableItem>
+</list>

@@ -2,7 +2,7 @@
 <project>
   <actions/>
   <description>Make a source distribution tgz</description>
-  <logRotator>
+  <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>180</daysToKeep>
     <numToKeep>-1</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
@@ -26,7 +26,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers class="vector"/>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
@@ -37,10 +37,7 @@ git checkout -f FETCH_HEAD
 git clean -fxd
 
 ./configure --fetch all
-make support/usr/bin/coffee VERBOSE=1
-coffee --version || :
-./support/usr/bin/coffee --version || :
-make support
+
 make dist VERBOSE=1
 
 mv build/packages/*.tgz .</command>
@@ -50,6 +47,7 @@ mv build/packages/*.tgz .</command>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>*.tgz</artifacts>
       <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>

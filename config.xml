@@ -88,7 +88,7 @@
           <key>SlaveComputer.DisconnectedBy</key>
           <args>
             <string>anonymous</string>
-            <string> : benchmarks</string>
+            <string> : Benchmarking ~daniel</string>
           </args>
         </description>
       </temporaryOfflineCause>
@@ -238,6 +238,16 @@
       <userId>anonymous</userId>
     </slave>
     <slave>
+      <temporaryOfflineCause class="hudson.slaves.OfflineCause$SimpleOfflineCause">
+        <description>
+          <holder reference="../../../../slave[3]/temporaryOfflineCause/description/holder"/>
+          <key>SlaveComputer.DisconnectedBy</key>
+          <args>
+            <string>anonymous</string>
+            <string> : benchmarking ~daniel</string>
+          </args>
+        </description>
+      </temporaryOfflineCause>
       <name>riddler</name>
       <description></description>
       <remoteFS>/var/jenkins</remoteFS>
@@ -300,6 +310,7 @@
         <string>nightly-launchpad</string>
         <string>nightly-osx</string>
         <string>nightly-tests</string>
+        <string>PerformanceRegression</string>
       </jobNames>
       <jobFilters/>
       <columns>
